@@ -1,0 +1,25 @@
+The Plan
+
+
+Data Import from Spreadsheet/GoogleSheet
+Compiler
+
+
+Prettier Skins
+
+x Model Data
+xShow Status, this scene, next scene
+
+x Test Server answers /api endpoint
+
+xWhat is wrong with the scene counter?
+
+X Create a data module that returns the model
+
+X Play a scene
+x - need to make this synchronous and maybe add delay timer?
+x Call REST out
+x Connect to buttons
+
+
+

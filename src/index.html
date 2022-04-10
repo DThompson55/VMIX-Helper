@@ -2,11 +2,37 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    -->
+    <title>VMix Helper</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> 
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style.css">
+    <script defer src="render.js"></script> 
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+    <div class="title is-2">VMix Helper</div>
+    <div><span class="title is-7" id="init-message">Initializing</span></div>
+    <div>Current Scene:&nbsp;<span id="current-scene"></span></div>
+    <hr/>
+    <div class="row" width=400px>
+      <div class="column"><img id="rewindBtn" src="images/rewindBtn.png" border="0" width="100" height="100"></div>
+      <div class="column"><img id="backBtn" src="images/backBtn.png" border="0" width="100" height="100"></div>
+      <div class="column"><img id="fwdBtn" src="images/fwdBtn.png"  border="0" width="100" height="100"></div>
+      <div class="column"><img id="ffBtn" src="images/ffBtn.png" border="0" width="100" height="100"></div>
+    </div>
+
+    <hr/>
+    <div>Next Scene:&nbsp;<span id="next-scene"></span></div>
+    <hr/>
+    Using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+
+  </body>
+</html>
+
   </body>
 </html>

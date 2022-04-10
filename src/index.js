@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require('electron');
+const controller = require("./controller.js")
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -10,8 +11,12 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 400,
     height: 600,
+    webPreferences:{
+      preload: path.join(__dirname, 'preload.js'),
+ //     nodeIntegration: true,
+    }
   });
 
   // and load the index.html of the app.
@@ -45,3 +50,21 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+controller.init();
+
+ipcMain.on('initScenes', (event, arg) => {
+   event.returnValue = controller.setFirstScene()
+})
+ipcMain.on('fwdBtnMsg', (event, arg) => {
+   event.returnValue = controller.setNextScene()
+})
+ipcMain.on('backBtnMsg', (event, arg) => {
+   event.returnValue = controller.setPreviousScene()
+})
+ipcMain.on('ffBtnMsg', (event, arg) => {
+   event.returnValue = controller.setLastScene()
+})
+ipcMain.on('rewindBtnMsg', (event, arg) => {
+   event.returnValue = controller.setFirstScene()
+})
