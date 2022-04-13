@@ -1,0 +1,460 @@
+ [{
+			"name":"xxx","sceneNumber": 1,
+			"description": "1 wide",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "14"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 2,
+			"description": "Gathering Music Mary 2 piano",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "34"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 3,
+			"description": "1 window L",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "24"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 4,
+			"description": "2 piano",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "34"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 5,
+			"description": "welcome slide  slide",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "45"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 6,
+			"description": "welcome/ announcement Stacey Jennifer Klee 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 7,
+			"description": "Centering/ intro to video Stacey 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 8,
+			"description": "Prelude  video",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "47"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 9,
+			"description": "intro to video  1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 10,
+			"description": "Chalice Lighting Eliot video",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "48"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 11,
+			"description": "intro to video  1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 12,
+			"description": "Opening Words Olivia video",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "49"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 13,
+			"description": "intro to hymn Alan 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 14,
+			"description": "Opening Hymn Jeannette LeSure 2-slide",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "51"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 15,
+			"description": "Intro to Service Alan/stacy 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 16,
+			"description": "Reading slides slide",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "52"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 17,
+			"description": "Back to stacey stacy 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 18,
+			"description": "Musical Meditation Mary 2 piano",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "34"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 19,
+			"description": "intro to video Alan 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 20,
+			"description": "Reading Ben Sands video",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "53"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 21,
+			"description": "J&C intro / floor  2 JC with pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "38"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 22,
+			"description": "J&C zoom Stacey 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 23,
+			"description": "J&C last word  1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 24,
+			"description": "Musical Response Mary 2 piano",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "34"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 25,
+			"description": "Offeratory intro Alan 1 med pulpit",
+			"hasOverlay": true,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}, {
+				"Function": "Preview",
+				"Input": "54"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 26,
+			"description": "Offeratory music Jeannette Dan video",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "56"
+			}, {
+				"Function": "Overlay1Off"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 27,
+			"description": "Reading Intro Alan? 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 28,
+			"description": "Reading Stacey slide",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "57"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 29,
+			"description": "reading conclusion  1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 30,
+			"description": "Musical Response Mary 2 piano",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "34"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 31,
+			"description": "Homily Alan 1 close pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "16"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 32,
+			"description": "Hymn Jeannette LeSure 2-slide",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "58"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 33,
+			"description": "intro to video stacy 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 34,
+			"description": "Final Reading Warren video",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "59"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 35,
+			"description": "intro to video stacy 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 36,
+			"description": "Extinguishing chalice Eliot Spencer video",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "60"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 37,
+			"description": "back from video stacey 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 38,
+			"description": "Closing slide Stacey slide",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "61"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 39,
+			"description": "Final words Alan 1 med pulpit",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "15"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 40,
+			"description": "postlude Mary 2 piano",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "34"
+			}]
+		}, {
+			"name":"xxx","sceneNumber": 41,
+			"description": "postlude  1 wide",
+			"hasOverlay": false,
+			"actions": [{
+				"Function": "Fade",
+				"Duration": "1000"
+			}, {
+				"Function": "Preview",
+				"Input": "14"
+			}]
+		}
+	]
+
+

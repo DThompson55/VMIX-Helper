@@ -1,37 +1,36 @@
-const a = require('./sceneManager.js')
+const scnMgr = require('./sceneManager.js')
 const axiosWrapper = require('./AxiosWrapper.js')
 
-
 function init(){
-	a.loadSceneFile();
+//	scnMgr.loadSceneFile();
 }
 
 function setFirstScene(){
- var scene = a.getFirstScene()
+ var scene = scnMgr.getFirstScene()
  sendScene(scene)
- return  a.getDisplayText();
+ return  scnMgr.getDisplayText();
 }
 
 function setLastScene(){
- var scene = a.getLastScene()
+ var scene = scnMgr.getLastScene()
  sendScene(scene)
- return  a.getDisplayText();
+ return  scnMgr.getDisplayText();
 }
 
 function setNextScene(){
- var scene = a.getNextScene()
+ var scene = scnMgr.getNextScene()
  sendScene(scene)
- return  a.getDisplayText();
+ return  scnMgr.getDisplayText();
 }
 
 function setPreviousScene(){
- var scene = a.getPreviousScene()
+ var scene = scnMgr.getPreviousScene()
  sendScene(scene)
- return  a.getDisplayText();
+ return  scnMgr.getDisplayText();
 }
 
 async function sendScene(scene){
-	console.log(JSON.stringify(scene))
+	console.log("sendScene",JSON.stringify(scene))
 	for (var i =0; i < scene.actions.length; i++){
 		var action = scene.actions[i];
   		await axiosWrapper.sendFunctionToVMIX("/api", action);

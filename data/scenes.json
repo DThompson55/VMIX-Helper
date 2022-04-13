@@ -1,20 +1,20 @@
-{"scenes": [
-{"scene": {"name": "one", "actions":[ 
+[
+{"description": "one", "actions":[ 
 {"Function": "PreviewInput", "Input": 1}, 
 {"Function": "Fade", "Duration": 1000},
 {"Function": "PreviewInput", "Input": 2},
-{"Function": "OverlayInput1In", "Input": 3}]}},
+{"Function": "OverlayInput1In", "Input": 3}]},
 
-{"scene": {"name": "two", "actions":[ 
+{"description": "two", "actions":[ 
 {"Function": "OverlayInput1Off"},
 {"Function": "Fade"},
 {"Function": "PreviewInput", "Input": 4},
-{"Function": "OverlayInput1In", "Input": 5}]}},
+{"Function": "OverlayInput1In", "Input": 5}]},
 
-{"scene": {"name": "three", "actions":[ 
+{"description": "three", "actions":[ 
 {"Function": "OverlayInput1Out"},
 {"Function": "Fade"},
 {"Function": "PreviewInput", "Input": 6},
-{"Function": "OverlayInput1In", "Input": 7}]}}
+{"Function": "OverlayInput1In", "Input": 7}]}
 
-]}
+]

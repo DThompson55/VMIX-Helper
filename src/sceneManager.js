@@ -1,4 +1,9 @@
-const scenes = require('../data/scenes.json').scenes
+const scenes = require("../data/long_scenes.json")
+//const scenes = require('../data/scenes.json')
+//const csvReader = require('./readCSV.js');
+
+
+console.log(scenes[0])
 
 var currentScene = 0;
 
@@ -24,7 +29,7 @@ return getScene(currentScene)
 
 
 function getDisplayText(){
-return {"currentSceneName":getScene(currentScene).name,"nextSceneName":getScene(currentScene+1).name}
+return {"currentSceneName":getScene(currentScene).description,"nextSceneName":getScene(currentScene+1).description}
 }
 
 function getFullDisplayText(){
@@ -33,14 +38,17 @@ return {"currentSceneName":getScene(currentScene),"nextSceneName":getScene(curre
 
 function getScene(n){
 	if (n < scenes.length)
-		return scenes[n].scene;
+		return scenes[n];
 	else
-		return {"name": "No More Scenes", "actions":[]}
+		return {"description": "No More Scenes", "actions":[]}
 }
 
-function loadSceneFile(filename="scenes.csv"){
-// TBD
+async function loadSceneFile(filename="scenes.csv"){
+	var scenesPromise = await csvReader.init("data/scenes.csv",callback)
+    async function callback(s){
+	}
 }
+
 
 exports.getFirstScene    = getFirstScene
 exports.getNextScene     = getNextScene
