@@ -1,6 +1,6 @@
-const scenes = require("../data/long_scenes.json")
+//const scenes = require("../data/long_scenes.json")
 //const scenes = require('../data/scenes.json')
-//const csvReader = require('./readCSV.js');
+const scenes = require('./readCSV.js').init("data/scenes.csv")
 
 
 console.log(scenes[0])

@@ -1,0 +1,257 @@
+<vmix>
+<version>25.0.0.29</version>
+<edition>4K</edition>
+<preset>C:\Users\UUSE Team\Desktop\this weeks service\4-17-22 service.vmix</preset>
+<inputs>
+<input key="5bc83741-7ccf-42a0-b797-1a37f7062a0d" number="1" type="Audio" title="PULPIT" shortTitle="PULPIT" state="Running" position="0" duration="0" loop="False" muted="True" volume="100" balance="0" solo="False" audiobusses="M" meterF1="0.006919791" meterF2="0.006919791" gainDb="9">PULPIT</input>
+<input key="67d88822-ba92-4eeb-8e91-223a6de295ca" number="2" type="Audio" title="CHOIR LFT" shortTitle="CHOIR LFT" state="Running" position="0" duration="0" loop="False" muted="True" volume="100" balance="0" solo="False" audiobusses="M" meterF1="0.004266622" meterF2="0.004266622" gainDb="6">CHOIR LFT</input>
+<input key="1775a29a-787b-4539-ab82-e0883a7925ee" number="3" type="Audio" title="CHOIR RT" shortTitle="CHOIR RT" state="Running" position="0" duration="0" loop="False" muted="True" volume="100" balance="0" solo="False" audiobusses="M" meterF1="0.00631323" meterF2="0.00631323" gainDb="2">CHOIR RT</input>
+<input key="5b4add1b-12ce-4873-a0c6-cebdcdbff579" number="4" type="Audio" title="JANEANE" shortTitle="JANEANE" state="Running" position="0" duration="0" loop="False" muted="False" volume="43.04672" balance="0" solo="False" audiobusses="M" meterF1="0.0001473787" meterF2="0.0001473787" gainDb="0">JANEANE</input>
+<input key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7" number="5" type="Audio" title="AUD PIANO 1" shortTitle="AUD PIANO 1" state="Running" position="0" duration="0" loop="False" muted="False" volume="100" balance="0" solo="False" audiobusses="M" meterF1="0.0006046801" meterF2="0.0006046801" gainDb="3.000003">AUD PIANO 1</input>
+<input key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d" number="6" type="Audio" title="AUD PIANO 2" shortTitle="AUD PIANO 2" state="Running" position="0" duration="0" loop="False" muted="False" volume="100" balance="0" solo="False" audiobusses="M" meterF1="0.0005599078" meterF2="0.0005599078" gainDb="5.999999">AUD PIANO 2</input>
+<input key="4b04a8b4-cf55-43ff-8027-4085fabe6ac4" number="7" type="Audio" title="Audio in 9" shortTitle="Audio in 9" state="Running" position="0" duration="0" loop="False" muted="True" volume="40.96" balance="0" solo="False" audiobusses="M" meterF1="7.044864E-05" meterF2="7.044864E-05" gainDb="13">Audio in 9</input>
+<input key="c351ec2e-40b6-46ec-b2ed-d76c311134a9" number="8" type="Audio" title="Audio In 10" shortTitle="Audio In 10" state="Running" position="0" duration="0" loop="False" muted="True" volume="100" balance="0" solo="False" audiobusses="M" meterF1="0.0001117253" meterF2="0.0001117253" gainDb="14">Audio In 10</input>
+<input key="7dbaed68-e093-4dd1-a069-d8bf5645346f" number="9" type="Audio" title="Audio In 11" shortTitle="Audio In 11" state="Running" position="0" duration="0" loop="False" muted="True" volume="100" balance="0" solo="False" audiobusses="M" meterF1="8.989526E-05" meterF2="8.989526E-05" gainDb="1.999997">Audio In 11</input>
+<input key="c4ada8ac-88f4-4bef-8f93-59930a5bcbf0" number="10" type="Audio" title="Audio In 14" shortTitle="Audio In 14" state="Running" position="0" duration="0" loop="False" muted="True" volume="100" balance="0" solo="False" audiobusses="M" meterF1="0.0007060766" meterF2="0.0007060766" gainDb="0">Audio In 14</input>
+<input key="c9adb27a-1762-46ab-aa57-c59b5bca0d0b" number="11" type="Audio" title="Audio CABLE-A Output" shortTitle="Audio CABLE-A Output" state="Running" position="0" duration="0" loop="False" muted="True" volume="100" balance="0" solo="False" audiobusses="M" meterF1="0" meterF2="0" gainDb="0">Audio CABLE-A Output</input>
+<input key="531282b2-705f-4f01-93de-97928ef125d6" number="12" type="Capture" title="camera 1" shortTitle="camera 1" state="Running" position="0" duration="0" loop="False">
+camera 1
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="0d0a63d6-e1e9-4033-89f1-3cb39e755567" number="13" type="Virtual" title="PTZ - 1 WIDE" shortTitle="1 WIDE" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 WIDE
+<overlay index="0" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="1" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+<overlay index="2" key="7dbaed68-e093-4dd1-a069-d8bf5645346f"/>
+</input>
+<input key="04165030-0543-40b7-b612-5b802f041dca" number="14" type="Virtual" title="PTZ - 1 SPLIT SCREEN LEFT" shortTitle="1 SPLIT SCREEN LEFT" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 SPLIT SCREEN LEFT
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="d0dc7ed5-acbc-4bec-ab16-ee29f58a4a29" number="15" type="Virtual" title="PTZ - 1 CLOSE PULPIT" shortTitle="1 CLOSE PULPIT" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 CLOSE PULPIT
+<overlay index="0" key="1775a29a-787b-4539-ab82-e0883a7925ee"/>
+</input>
+<input key="3a138504-a02d-4876-8e14-135928cb000e" number="16" type="Virtual" title="PTZ - 1 RIGHT" shortTitle="1 RIGHT" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 RIGHT
+<overlay index="0" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="1" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+<overlay index="2" key="4b04a8b4-cf55-43ff-8027-4085fabe6ac4"/>
+</input>
+<input key="2635cd06-1bc4-45af-b35c-ada99583f7a1" number="17" type="Virtual" title="PTZ - 1 PULPIT OVERLAY" shortTitle="1 PULPIT OVERLAY" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 PULPIT OVERLAY
+<overlay index="0" key="1775a29a-787b-4539-ab82-e0883a7925ee"/>
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="8e75b995-1620-44bb-8867-bb6e43f1ec73" number="18" type="Virtual" title="PTZ - 1 PIANO-MUSICIAN" shortTitle="1 PIANO-MUSICIAN" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 PIANO-MUSICIAN
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="e317f15e-ab49-4340-9015-0bb709587fd0" number="19" type="Virtual" title="PTZ - 1 e med pulpit" shortTitle="1 e med pulpit" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 e med pulpit
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="eaa2deef-b838-4888-9d6c-43ea14658068" number="20" type="Virtual" title="PTZ - 1 e Tree" shortTitle="1 e Tree" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 e Tree
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="556b7e54-5e4a-4eb2-8d4b-5a019384fd5b" number="21" type="Virtual" title="PTZ - 1 e close pulpit" shortTitle="1 e close pulpit" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 e close pulpit
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="35aeb119-c7c6-4b35-8c20-0c72c16ff281" number="22" type="Colour" title="1-2 Prelude Split " shortTitle="1-2 Prelude Split " state="Paused" position="0" duration="0" loop="False">1-2 Prelude Split </input>
+<input key="f179a065-90dc-47ab-bba0-f4ac898e5fd7" number="23" type="Virtual" title="PTZ - 1 FULL WIDE" shortTitle="1 FULL WIDE" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 FULL WIDE
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="4399f560-68c3-4193-9212-864d87cd85cd" number="24" type="Capture" title="camera 2" shortTitle="camera 2" state="Running" position="0" duration="0" loop="False">camera 2</input>
+<input key="01617f9f-5b97-4800-887e-3deae6d2955b" number="25" type="Virtual" title="PTZ - 1 CHOIR CLOSE" shortTitle="1 CHOIR CLOSE" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 CHOIR CLOSE
+<overlay index="0" key="67d88822-ba92-4eeb-8e91-223a6de295ca"/>
+<overlay index="1" key="1775a29a-787b-4539-ab82-e0883a7925ee"/>
+<overlay index="2" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="3" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="162be4f6-fd3e-4738-80d3-8aa1fea6ce69" number="26" type="Virtual" title="PTZ - 1 E PIANO" shortTitle="1 E PIANO" state="Paused" position="0" duration="0" loop="False">
+PTZ - 1 E PIANO
+<overlay index="0" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="1" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+<position panX="-0.003616571" panY="-0.006430864"/>
+</input>
+<input key="08bf1a89-d440-4acc-80e0-c804544efc8e" number="27" type="Virtual" title="PTZ - 2 WIDE" shortTitle="2 WIDE" state="Paused" position="0" duration="0" loop="False">
+PTZ - 2 WIDE
+<overlay index="0" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="1" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+</input>
+<input key="6a63b2fa-0e41-40ac-a315-7edab4f4f6cf" number="28" type="Virtual" title="PTZ - 2 MED PULPIT" shortTitle="2 MED PULPIT" state="Paused" position="0" duration="0" loop="False">
+PTZ - 2 MED PULPIT
+<overlay index="0" key="1775a29a-787b-4539-ab82-e0883a7925ee"/>
+<overlay index="2" key="4b04a8b4-cf55-43ff-8027-4085fabe6ac4"/>
+</input>
+<input key="f610f20d-7659-4f37-a92c-f6a1deeab02a" number="29" type="Virtual" title="PTZ - 2 J & C WIDE" shortTitle="2 J & C WIDE" state="Paused" position="0" duration="0" loop="False">
+PTZ - 2 J & C WIDE
+<overlay index="0" key="1775a29a-787b-4539-ab82-e0883a7925ee"/>
+</input>
+<input key="354317eb-8ba2-4237-b703-27a55a7d0e99" number="30" type="Virtual" title="PTZ - 2 PIANO-MUSICIAN" shortTitle="2 PIANO-MUSICIAN" state="Paused" position="0" duration="0" loop="False">
+PTZ - 2 PIANO-MUSICIAN
+<overlay index="0" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+<overlay index="1" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="2" key="5b4add1b-12ce-4873-a0c6-cebdcdbff579"/>
+</input>
+<input key="3e9bb124-3800-44dc-b0c4-f0674d465d03" number="31" type="Virtual" title="PTZ - 2 FULL WIDE" shortTitle="2 FULL WIDE" state="Paused" position="0" duration="0" loop="False">PTZ - 2 FULL WIDE</input>
+<input key="281491ef-0b83-451d-918e-c9ecfa336811" number="32" type="Virtual" title="PTZ - 2 CHOIR CLOSE" shortTitle="2 CHOIR CLOSE" state="Paused" position="0" duration="0" loop="False">PTZ - 2 CHOIR CLOSE</input>
+<input key="2b85f2a0-fe1e-4bbb-af19-cd3043ac3898" number="33" type="Virtual" title="PTZ - 2 E MED PULPIT" shortTitle="2 E MED PULPIT" state="Paused" position="0" duration="0" loop="False">
+PTZ - 2 E MED PULPIT
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+</input>
+<input key="0ce346cc-5bed-46b6-9f86-36b6aa3fb1f8" number="34" type="Virtual" title="PTZ - 2 E WIDE PULPIT" shortTitle="2 E WIDE PULPIT" state="Paused" position="0" duration="0" loop="False">
+PTZ - 2 E WIDE PULPIT
+<overlay index="0" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="1" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+<overlay index="2" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+</input>
+<input key="8cbab4e7-265a-41c4-a3db-91884573b2dc" number="35" type="Virtual" title="PTZ - 2 CHOIR WIDE" shortTitle="2 CHOIR WIDE" state="Paused" position="0" duration="0" loop="False">
+PTZ - 2 CHOIR WIDE
+<overlay index="0" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="1" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+<overlay index="2" key="67d88822-ba92-4eeb-8e91-223a6de295ca"/>
+<overlay index="3" key="1775a29a-787b-4539-ab82-e0883a7925ee"/>
+</input>
+<input key="71d73136-de48-443d-9c4b-cd0d4e378eca" number="36" type="VirtualSet" title="2 CHOIR ZOOMZ" shortTitle="2 CHOIR ZOOMZ" state="Paused" position="0" duration="0" loop="False" selectedIndex="3">
+2 CHOIR ZOOMZ
+<overlay index="0" key="3dc5623d-0378-4f40-84d9-cc9553296705"/>
+<overlay index="1" key="281491ef-0b83-451d-918e-c9ecfa336811"/>
+<overlay index="2" key="67d88822-ba92-4eeb-8e91-223a6de295ca"/>
+<overlay index="3" key="1775a29a-787b-4539-ab82-e0883a7925ee"/>
+<overlay index="4" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="5" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+</input>
+<input key="eaa4aa77-0a3b-4bf4-9644-54b8b112a31a" number="37" type="Virtual" title="PTZ - 2e piano" shortTitle="2e piano" state="Paused" position="0" duration="0" loop="False">
+PTZ - 2e piano
+<overlay index="0" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="1" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+</input>
+<input key="e15ce769-f220-42f4-ac7a-42eb40bf6570" number="38" type="Photos" title="Welcome Slides - Spring - Slide1.PNG" shortTitle="Welcome Slides - Spring" state="Paused" position="0" duration="1" loop="False" selectedIndex="1">
+Welcome Slides - Spring - Slide1.PNG
+<overlay index="0" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="1" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+</input>
+<input key="01501abb-fe68-4148-bb78-a54e38e4adab" number="39" type="Video" title="Be Like a Bird Video 4-17-2022.mpg" shortTitle="Be Like a Bird Video 4-17-2022.mpg" state="Paused" position="1875" duration="83256" loop="False" muted="True" volume="24.01" balance="0" solo="False" audiobusses="M,A" meterF1="0" meterF2="0" gainDb="0">Be Like a Bird Video 4-17-2022.mpg</input>
+<input key="1b5c373c-ca1c-41f6-9113-facdbc3b1b38" number="40" type="VirtualSet" title="1 CHALICE VIRTUAL" shortTitle="1 CHALICE VIRTUAL" state="Paused" position="0" duration="0" loop="False" selectedIndex="3">
+1 CHALICE VIRTUAL
+<overlay index="0" key="2bb76d7c-d7a5-46b5-8b06-24229aed9e80">
+<position panY="-0.01538467"/>
+</overlay>
+<overlay index="1" key="1e9c59fb-5899-4f63-95c3-43230b5174bf"/>
+<overlay index="2" key="73835731-5ba5-453c-9830-2360c9976785"/>
+<overlay index="3" key="2a514289-ef26-4bd1-84a0-c09e683ce3a4"/>
+<overlay index="4" key="3ed160be-633a-4931-8e56-86311f32ddf4"/>
+</input>
+<input key="07a3fd53-0cf4-409d-b395-6957ca22acb6" number="41" type="PowerPoint" title="In Time of Silver Rain 2 - l.hughes - Spring.pptx - Slide1" shortTitle="In Time of Silver Rain 2 - l.hughes - Spring.pptx" state="Paused" position="0" duration="3" loop="False" selectedIndex="1">
+In Time of Silver Rain 2 - l.hughes - Spring.pptx - Slide1
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+</input>
+<input key="a6030d3c-3a17-4229-b6fd-fdd04312eb3d" number="42" type="PowerPoint" title="38 Morning Has Broken - spring.pptx - Slide1" shortTitle="38 Morning Has Broken - spring.pptx" state="Paused" position="0" duration="2" loop="False" selectedIndex="1">
+38 Morning Has Broken - spring.pptx - Slide1
+<overlay index="0" key="5b4add1b-12ce-4873-a0c6-cebdcdbff579"/>
+<overlay index="1" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="2" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+<overlay index="3" key="0ce346cc-5bed-46b6-9f86-36b6aa3fb1f8">
+<position panX="0.6013882" panY="-0.1797103" zoomX="0.3801362" zoomY="0.3801362"/>
+</overlay>
+</input>
+<input key="e4dda077-b98a-4748-a13b-8605447f0d97" number="43" type="Colour" title="1 2 TREE DECORATING" shortTitle="1 2 TREE DECORATING" state="Paused" position="0" duration="0" loop="False">
+1 2 TREE DECORATING
+<overlay index="0" key="4652e5cb-2500-4814-8471-43acecd19e4f"/>
+<overlay index="1" key="354317eb-8ba2-4237-b703-27a55a7d0e99">
+<position panX="-0.9104882" panY="0.0392189" zoomX="0.87125" zoomY="0.87125"/>
+</overlay>
+<overlay index="2" key="04165030-0543-40b7-b612-5b802f041dca">
+<position panX="0.7305605" panY="0.01286179" zoomX="0.8355" zoomY="0.8355"/>
+</overlay>
+<position zoomX="1.023" zoomY="1.023"/>
+</input>
+<input key="35de7969-8b41-41c9-ae65-a95bb6c00a93" number="44" type="VirtualSet" title="1 CHOIR ZOOM" shortTitle="1 CHOIR ZOOM" state="Paused" position="0" duration="0" loop="False" selectedIndex="4">
+1 CHOIR ZOOM
+<overlay index="0" key="01617f9f-5b97-4800-887e-3deae6d2955b"/>
+<overlay index="1" key="d9f826b8-61c0-4664-a485-144c89dae3a6"/>
+<overlay index="2" key="f576d02f-f04e-4061-bacf-09ffc0f89d05"/>
+<overlay index="3" key="62c81d48-d3fd-4a4b-bce9-f4c54854b8d3"/>
+<overlay index="4" key="530ded90-28ea-42f0-8ceb-e43a2e3f1374">
+<position panX="0.0163132" panY="-0.005797148"/>
+</overlay>
+<position panX="3.957845" panY="-1.833333" zoomX="5" zoomY="5"/>
+</input>
+<input key="9fa5bc46-b1d9-4cf8-b4d2-3153779722a5" number="45" type="PowerPoint" title="Bird's Gift Story PART 1.pptx - Slide1" shortTitle="Bird's Gift Story PART 1.pptx" state="Paused" position="0" duration="7" loop="False" selectedIndex="1">
+Bird's Gift Story PART 1.pptx - Slide1
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+</input>
+<input key="6b05afab-a3ca-4876-bb3b-7e7a13c266f8" number="46" type="GT" title="DONATE OVERLAY 2" shortTitle="DONATE OVERLAY 2" state="Paused" position="0" duration="0" loop="False" selectedIndex="0">
+DONATE OVERLAY 2
+<text index="0" name="Headline.Text">donate at uuse.org</text>
+<text index="1" name="Description.Text"/>
+</input>
+<input key="4652e5cb-2500-4814-8471-43acecd19e4f" number="47" type="Placeholder" title="Offline - Blank Spring.pptx" shortTitle="Blank Spring.pptx" state="Paused" position="0" duration="0" loop="False">Offline - Blank Spring.pptx</input>
+<input key="d6c7e4e8-f6fd-4741-9436-800e18dca775" number="48" type="PowerPoint" title="Bird's Gift Story PART 2.pptx - Slide5" shortTitle="Bird's Gift Story PART 2.pptx" state="Paused" position="4" duration="4" loop="False" selectedIndex="5">
+Bird's Gift Story PART 2.pptx - Slide5
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+</input>
+<input key="4b18d8a3-0b6a-4799-aa92-23a86203bf63" number="49" type="PowerPoint" title="Bird's Gift Story PART 3.pptx - Slide1" shortTitle="Bird's Gift Story PART 3.pptx" state="Paused" position="0" duration="3" loop="False" selectedIndex="1">
+Bird's Gift Story PART 3.pptx - Slide1
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+</input>
+<input key="2258abb0-b756-4dd8-9efb-6320b213b8aa" number="50" type="PowerPoint" title="203 All Creatures of the Earth and Sky- spring.pptx - Slide1" shortTitle="203 All Creatures of the Earth and Sky- spring.pptx" state="Paused" position="0" duration="2" loop="False" selectedIndex="1">
+203 All Creatures of the Earth and Sky- spring.pptx - Slide1
+<overlay index="0" key="5b4add1b-12ce-4873-a0c6-cebdcdbff579"/>
+<overlay index="1" key="fabdc81a-f0b6-440e-a349-29c0bf93a3d7"/>
+<overlay index="2" key="9b7ea3fb-9a41-453d-b289-c59b2a8dc43d"/>
+</input>
+<input key="3bc7b8a4-00af-48f1-804e-685013b0a226" number="51" type="Image" title="Closing Circle - spring.png" shortTitle="Closing Circle - spring.png" state="Paused" position="0" duration="0" loop="False">
+Closing Circle - spring.png
+<overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
+</input>
+</inputs>
+<overlays>
+<overlay number="1"/>
+<overlay number="2"/>
+<overlay number="3"/>
+<overlay number="4"/>
+<overlay number="5"/>
+<overlay number="6"/>
+<overlay number="7"/>
+<overlay number="8"/>
+</overlays>
+<preview>19</preview>
+<active>43</active>
+<fadeToBlack>False</fadeToBlack>
+<transitions>
+<transition number="1" effect="Fade" duration="2000"/>
+<transition number="2" effect="Fade" duration="1000"/>
+<transition number="3" effect="Merge" duration="2500"/>
+<transition number="4" effect="Fade" duration="500"/>
+</transitions>
+<recording filename1="C:\Users\UUSE Team\Desktop\4-17-22 choir test.mp4">False</recording>
+<external>False</external>
+<streaming>False</streaming>
+<playList>False</playList>
+<multiCorder>False</multiCorder>
+<fullscreen>False</fullscreen>
+<audio>
+<master volume="100" muted="False" meterF1="0.001138966" meterF2="0.001138966" headphonesVolume="100"/>
+<busA volume="100" muted="False" meterF1="0" meterF2="0"/>
+</audio>
+<dynamic>
+<input1/>
+<input2/>
+<input3/>
+<input4/>
+<value1/>
+<value2/>
+<value3/>
+<value4/>
+</dynamic>
+</vmix>

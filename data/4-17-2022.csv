@@ -1,0 +1,52 @@
+key,number,type,title,shortTitle,state,position,duration,loop,muted,volume,balance,solo,audiobusses,meterF1,meterF2,gainDb,selectedIndex
+5bc83741-7ccf-42a0-b797-1a37f7062a0d,1,Audio,PULPIT,PULPIT,Running,0,0,False,True,100,0,False,M,0.006919791,0.006919791,9,
+67d88822-ba92-4eeb-8e91-223a6de295ca,2,Audio,CHOIR LFT,CHOIR LFT,Running,0,0,False,True,100,0,False,M,0.004266622,0.004266622,6,
+1775a29a-787b-4539-ab82-e0883a7925ee,3,Audio,CHOIR RT,CHOIR RT,Running,0,0,False,True,100,0,False,M,0.00631323,0.00631323,2,
+5b4add1b-12ce-4873-a0c6-cebdcdbff579,4,Audio,JANEANE,JANEANE,Running,0,0,False,False,43.04672,0,False,M,0.0001473787,0.0001473787,0,
+fabdc81a-f0b6-440e-a349-29c0bf93a3d7,5,Audio,AUD PIANO 1,AUD PIANO 1,Running,0,0,False,False,100,0,False,M,0.0006046801,0.0006046801,3.000003,
+9b7ea3fb-9a41-453d-b289-c59b2a8dc43d,6,Audio,AUD PIANO 2,AUD PIANO 2,Running,0,0,False,False,100,0,False,M,0.0005599078,0.0005599078,5.999999,
+4b04a8b4-cf55-43ff-8027-4085fabe6ac4,7,Audio,Audio in 9,Audio in 9,Running,0,0,False,True,40.96,0,False,M,7.044864E-05,7.044864E-05,13,
+c351ec2e-40b6-46ec-b2ed-d76c311134a9,8,Audio,Audio In 10,Audio In 10,Running,0,0,False,True,100,0,False,M,0.0001117253,0.0001117253,14,
+7dbaed68-e093-4dd1-a069-d8bf5645346f,9,Audio,Audio In 11,Audio In 11,Running,0,0,False,True,100,0,False,M,8.989526E-05,8.989526E-05,1.999997,
+c4ada8ac-88f4-4bef-8f93-59930a5bcbf0,10,Audio,Audio In 14,Audio In 14,Running,0,0,False,True,100,0,False,M,0.0007060766,0.0007060766,0,
+c9adb27a-1762-46ab-aa57-c59b5bca0d0b,11,Audio,Audio CABLE-A Output,Audio CABLE-A Output,Running,0,0,False,True,100,0,False,M,0,0,0,
+531282b2-705f-4f01-93de-97928ef125d6,12,Capture,camera 1,camera 1,Running,0,0,False,,,,,,,,,
+0d0a63d6-e1e9-4033-89f1-3cb39e755567,13,Virtual,PTZ - 1 WIDE,1 WIDE,Paused,0,0,False,,,,,,,,,
+04165030-0543-40b7-b612-5b802f041dca,14,Virtual,PTZ - 1 SPLIT SCREEN LEFT,1 SPLIT SCREEN LEFT,Paused,0,0,False,,,,,,,,,
+d0dc7ed5-acbc-4bec-ab16-ee29f58a4a29,15,Virtual,PTZ - 1 CLOSE PULPIT,1 CLOSE PULPIT,Paused,0,0,False,,,,,,,,,
+3a138504-a02d-4876-8e14-135928cb000e,16,Virtual,PTZ - 1 RIGHT,1 RIGHT,Paused,0,0,False,,,,,,,,,
+2635cd06-1bc4-45af-b35c-ada99583f7a1,17,Virtual,PTZ - 1 PULPIT OVERLAY,1 PULPIT OVERLAY,Paused,0,0,False,,,,,,,,,
+8e75b995-1620-44bb-8867-bb6e43f1ec73,18,Virtual,PTZ - 1 PIANO-MUSICIAN,1 PIANO-MUSICIAN,Paused,0,0,False,,,,,,,,,
+e317f15e-ab49-4340-9015-0bb709587fd0,19,Virtual,PTZ - 1 e med pulpit,1 e med pulpit,Paused,0,0,False,,,,,,,,,
+eaa2deef-b838-4888-9d6c-43ea14658068,20,Virtual,PTZ - 1 e Tree,1 e Tree,Paused,0,0,False,,,,,,,,,
+556b7e54-5e4a-4eb2-8d4b-5a019384fd5b,21,Virtual,PTZ - 1 e close pulpit,1 e close pulpit,Paused,0,0,False,,,,,,,,,
+35aeb119-c7c6-4b35-8c20-0c72c16ff281,22,Colour,1-2 Prelude Split ,1-2 Prelude Split ,Paused,0,0,False,,,,,,,,,
+f179a065-90dc-47ab-bba0-f4ac898e5fd7,23,Virtual,PTZ - 1 FULL WIDE,1 FULL WIDE,Paused,0,0,False,,,,,,,,,
+4399f560-68c3-4193-9212-864d87cd85cd,24,Capture,camera 2,camera 2,Running,0,0,False,,,,,,,,,
+01617f9f-5b97-4800-887e-3deae6d2955b,25,Virtual,PTZ - 1 CHOIR CLOSE,1 CHOIR CLOSE,Paused,0,0,False,,,,,,,,,
+162be4f6-fd3e-4738-80d3-8aa1fea6ce69,26,Virtual,PTZ - 1 E PIANO,1 E PIANO,Paused,0,0,False,,,,,,,,,
+08bf1a89-d440-4acc-80e0-c804544efc8e,27,Virtual,PTZ - 2 WIDE,2 WIDE,Paused,0,0,False,,,,,,,,,
+6a63b2fa-0e41-40ac-a315-7edab4f4f6cf,28,Virtual,PTZ - 2 MED PULPIT,2 MED PULPIT,Paused,0,0,False,,,,,,,,,
+f610f20d-7659-4f37-a92c-f6a1deeab02a,29,Virtual,PTZ - 2 J & C WIDE,2 J & C WIDE,Paused,0,0,False,,,,,,,,,
+354317eb-8ba2-4237-b703-27a55a7d0e99,30,Virtual,PTZ - 2 PIANO-MUSICIAN,2 PIANO-MUSICIAN,Paused,0,0,False,,,,,,,,,
+3e9bb124-3800-44dc-b0c4-f0674d465d03,31,Virtual,PTZ - 2 FULL WIDE,2 FULL WIDE,Paused,0,0,False,,,,,,,,,
+281491ef-0b83-451d-918e-c9ecfa336811,32,Virtual,PTZ - 2 CHOIR CLOSE,2 CHOIR CLOSE,Paused,0,0,False,,,,,,,,,
+2b85f2a0-fe1e-4bbb-af19-cd3043ac3898,33,Virtual,PTZ - 2 E MED PULPIT,2 E MED PULPIT,Paused,0,0,False,,,,,,,,,
+0ce346cc-5bed-46b6-9f86-36b6aa3fb1f8,34,Virtual,PTZ - 2 E WIDE PULPIT,2 E WIDE PULPIT,Paused,0,0,False,,,,,,,,,
+8cbab4e7-265a-41c4-a3db-91884573b2dc,35,Virtual,PTZ - 2 CHOIR WIDE,2 CHOIR WIDE,Paused,0,0,False,,,,,,,,,
+71d73136-de48-443d-9c4b-cd0d4e378eca,36,VirtualSet,2 CHOIR ZOOMZ,2 CHOIR ZOOMZ,Paused,0,0,False,,,,,,,,,3
+eaa4aa77-0a3b-4bf4-9644-54b8b112a31a,37,Virtual,PTZ - 2e piano,2e piano,Paused,0,0,False,,,,,,,,,
+e15ce769-f220-42f4-ac7a-42eb40bf6570,38,Photos,Welcome Slides - Spring - Slide1.PNG,Welcome Slides - Spring,Paused,0,1,False,,,,,,,,,1
+01501abb-fe68-4148-bb78-a54e38e4adab,39,Video,Be Like a Bird Video 4-17-2022.mpg,Be Like a Bird Video 4-17-2022.mpg,Paused,1875,83256,False,True,24.01,0,False,"M,A",0,0,0,
+1b5c373c-ca1c-41f6-9113-facdbc3b1b38,40,VirtualSet,1 CHALICE VIRTUAL,1 CHALICE VIRTUAL,Paused,0,0,False,,,,,,,,,3
+07a3fd53-0cf4-409d-b395-6957ca22acb6,41,PowerPoint,In Time of Silver Rain 2 - l.hughes - Spring.pptx - Slide1,In Time of Silver Rain 2 - l.hughes - Spring.pptx,Paused,0,3,False,,,,,,,,,1
+a6030d3c-3a17-4229-b6fd-fdd04312eb3d,42,PowerPoint,38 Morning Has Broken - spring.pptx - Slide1,38 Morning Has Broken - spring.pptx,Paused,0,2,False,,,,,,,,,1
+e4dda077-b98a-4748-a13b-8605447f0d97,43,Colour,1 2 TREE DECORATING,1 2 TREE DECORATING,Paused,0,0,False,,,,,,,,,
+35de7969-8b41-41c9-ae65-a95bb6c00a93,44,VirtualSet,1 CHOIR ZOOM,1 CHOIR ZOOM,Paused,0,0,False,,,,,,,,,4
+9fa5bc46-b1d9-4cf8-b4d2-3153779722a5,45,PowerPoint,Bird's Gift Story PART 1.pptx - Slide1,Bird's Gift Story PART 1.pptx,Paused,0,7,False,,,,,,,,,1
+6b05afab-a3ca-4876-bb3b-7e7a13c266f8,46,GT,DONATE OVERLAY 2,DONATE OVERLAY 2,Paused,0,0,False,,,,,,,,,0
+4652e5cb-2500-4814-8471-43acecd19e4f,47,Placeholder,Offline - Blank Spring.pptx,Blank Spring.pptx,Paused,0,0,False,,,,,,,,,
+d6c7e4e8-f6fd-4741-9436-800e18dca775,48,PowerPoint,Bird's Gift Story PART 2.pptx - Slide5,Bird's Gift Story PART 2.pptx,Paused,4,4,False,,,,,,,,,5
+4b18d8a3-0b6a-4799-aa92-23a86203bf63,49,PowerPoint,Bird's Gift Story PART 3.pptx - Slide1,Bird's Gift Story PART 3.pptx,Paused,0,3,False,,,,,,,,,1
+2258abb0-b756-4dd8-9efb-6320b213b8aa,50,PowerPoint,203 All Creatures of the Earth and Sky- spring.pptx - Slide1,203 All Creatures of the Earth and Sky- spring.pptx,Paused,0,2,False,,,,,,,,,1
+3bc7b8a4-00af-48f1-804e-685013b0a226,51,Image,Closing Circle - spring.png,Closing Circle - spring.png,Paused,0,0,False,,,,,,,,,
