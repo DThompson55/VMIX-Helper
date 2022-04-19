@@ -1,0 +1,7 @@
+=OFFSET(Sheet3!$B:$B,0,0,COUNTA(Sheet3!$B:$B),1)
+=OFFSET(Sheet3!$B:$B,0,0,COUNTA(Sheet3!$B:$B),1)
+
+=OFFSET(Sheet3!$E:$E,1,0,(COUNTA(Sheet3!$E:$E)-1),1)\
+
+=INDEX(Sheet3!C:C,MATCH(F8,Sheet3!$E:$E,0))
+

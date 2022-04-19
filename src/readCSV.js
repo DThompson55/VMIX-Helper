@@ -85,13 +85,12 @@ function addOverlayOffToScene(scene, action){
  console.log("Add Overlay Off")   
 }
 
-async function init(csvFilePath="data/sample.csv"){
-  console.log("READ CSV",csvFilePath)
-  const rawActions = await csv().fromFile(csvFilePath);
-  const scenes = rawActionstoScenes(rawActions);
-  return scenes;
+async function read(csvFilePath,callback){
+  var rawActions = await csv().fromFile(csvFilePath);
+  var scenes = rawActionstoScenes(rawActions);
+  callback(scenes)
 }
 
 
 //buildPlan("../data/sample.csv") // tester
-module.exports = {init: init}
+module.exports = {read: read}

@@ -9,6 +9,12 @@ if (require('electron-squirrel-startup')) {
 }
 
 const createWindow = () => {
+//
+// TODO create a flexible initialization file loader
+//
+   controller.init("data/scenes.csv",x => {
+   controller.setScenes(x);
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 400,
@@ -16,7 +22,6 @@ const createWindow = () => {
     webPreferences:{
       preload: path.join(__dirname, 'preload.js'),
       devTools: false // This will disable dev tools
- //     nodeIntegration: true,
     }
   });
 
@@ -25,6 +30,7 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+})
 };
 
 // This method will be called when Electron has finished
@@ -54,7 +60,6 @@ app.on('activate', () => {
 
 
 ipcMain.on('initScenes', (event, arg) => {
-   controller.init();
    event.returnValue = controller.setFirstScene()
 })
 ipcMain.on('fwdBtnMsg', (event, arg) => {
