@@ -66,8 +66,8 @@ function newScene(){
 
 function addToScene(scene, inputNumber, action, description){
     let cmd = Object.assign({}, cmdTemplate); // new scene
-    if (cmd.Function === "Preview"){
-        cmd.Function = "PreviewInput";
+    if (action === "Preview"){
+        action = "PreviewInput";
     }
     cmd.Function = action;
     cmd.Input = inputNumber;
