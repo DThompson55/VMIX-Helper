@@ -41,7 +41,7 @@ async function sendScene(scene, i=0){
     if ( i < scene.actions.length){
         var action = scene.actions[i];
         await axiosWrapper.VMixSend("/api", action, x => {
-            console.log(x)
+//            console.log(x)
             sendScene(scene,++i)
         });
     }
