@@ -39,10 +39,11 @@ function setPreviousScene(){
 
 async function sendScene(scene, i=0){
     if ( i < scene.actions.length){
+        if ( i > 0 ) await delay(1000)
         var action = scene.actions[i];
         await axiosWrapper.VMixSend("/api", action, x => {
 //            console.log(x)
-            await delay(1000)
+
             sendScene(scene,++i)
         });
     }
