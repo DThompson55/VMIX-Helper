@@ -37,11 +37,21 @@ function setPreviousScene(){
  return  scnMgr.getDisplayText();
 }
 
-async function sendScene(scene){
-	for (var i =0; i < scene.actions.length; i++){
-		var action = scene.actions[i];
-  		await axiosWrapper.VMixSend("/api", action);
-	}
+async function sendScene(scene, i=0){
+    if ( i < scene.actions.length){
+        var action = scene.actions[i];
+        await axiosWrapper.VMixSend("/api", action, x => {
+            console.log(x)
+            sendScene(scene,++i)
+        });
+    }
+}
+
+async function sendSceneX(scene){
+    for (var i =0; i < scene.actions.length; i++){
+        var action = scene.actions[i];
+        await axiosWrapper.VMixSend("/api", action, callback);
+    }
 }
 
 async function getVMixConfig(filePath,callback){
