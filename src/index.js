@@ -12,7 +12,7 @@ const createWindow = () => {
 //
 // TODO create a flexible initialization file loader
 //
-   controller.init("data/scenes.csv",x => {
+   controller.init("data/4-17-22 service plan.xlsx",x => {
    controller.setScenes(x);
 
   // Create the browser window.
