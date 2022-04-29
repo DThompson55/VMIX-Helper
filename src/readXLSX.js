@@ -71,6 +71,9 @@ function addToScene(scene, inputNumber, action, description){
     }
     cmd.Function = action;
     cmd.Input = inputNumber;
+    if (action === "Fade"){
+        delete cmd.Input;
+    }
     if (description){
         scene.description = description;
     }
