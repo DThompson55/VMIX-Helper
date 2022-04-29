@@ -46,11 +46,9 @@ function sleep(ms) {
 
 async function sendScene(scene, i=0){
     if ( i < scene.actions.length){
-        if ( i > 0 ) await sleep(500)
+        if ( i > 0 ) await sleep(1000) // this will drive me nuts, but it works
         var action = scene.actions[i];
         await axiosWrapper.VMixSend("/api", action, x => {
-//            console.log(x)
-
             sendScene(scene,++i)
         });
     }
