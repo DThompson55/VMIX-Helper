@@ -37,9 +37,16 @@ function setPreviousScene(){
  return  scnMgr.getDisplayText();
 }
 
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
 async function sendScene(scene, i=0){
     if ( i < scene.actions.length){
-        if ( i > 0 ) await delay(1000)
+        if ( i > 0 ) await sleep(1000)
         var action = scene.actions[i];
         await axiosWrapper.VMixSend("/api", action, x => {
 //            console.log(x)
