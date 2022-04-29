@@ -31,9 +31,9 @@ function buildScenes(ws, callback){
         var orderOfService =getCell("I"+row);
         var title =getCell("J"+row);
         var person =getCell("K"+row);
-        var description = (orderOfService+" "+title+" "+person).trim();
+        var description = (inputNumber+" "+orderOfService+" "+title+" "+person).trim();
         if (!description){
-            description = shortName;
+            description = inputNumber+" "+shortName;
         }
         var nextPreAction =getCell("C"+(row+1));
         var nextInputNumber =getCell("B"+(row+1));
