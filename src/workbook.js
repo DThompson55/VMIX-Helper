@@ -19,15 +19,18 @@ try{
 }
  
 xmlReader.getVMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
+	var theSame = true;
     	for (var i = 0; i < result.vmix.inputs[0].input.length; i++) {
     		let newValue = result.vmix.inputs[0].input[i].$
     		let value = referenceBag[result.vmix.inputs[0].input[i].$.key]
     		if (value) {
     			if (value.number != newValue.number){console.log("number updated for key",ws["A"+i].v)
     				ws["B"+i].v = newValue.number;
+    				theSame = false;
     			}//numbers match
     			if (value.shortTitle !== newValue.shortTitle){console.log("shortTitle updated for key",ws["A"+i].v)
 					ws["E"+i].v = newValue.shortTitle;
+					theSame = false;
     			}//numbers match
 		     }else {
 		     	ws["A"+bagSize] = newValue.key;
@@ -37,6 +40,7 @@ xmlReader.getVMixConfig('../data/4-17-2022-amps fixed.xml', function (err, resul
 		     	ws["E"+bagSize] = newValue.shortTitle;
 		     	console.log("New Properties Added",newValue.key,newValue.number,newValue.shortTitle,"bagSize =",bagSize,"key is",ws["A"+bagSize]);
 		     	bagSize++;
+		     	theSame = false;
 		     }
         }
 
@@ -59,6 +63,9 @@ xmlReader.getVMixConfig('../data/4-17-2022-amps fixed.xml', function (err, resul
 			break;
 		}
 		}
+
+		console.log("Spreadsheet "+(theSame?"matches":"does not match")+" the VMix configuration");
+
     });
 
 

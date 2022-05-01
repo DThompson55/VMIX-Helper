@@ -1,6 +1,6 @@
 //const scenes = require("../data/long_scenes.json")
 //const scenes = require('../data/scenes.json')
-const csvReader = require('./readCSV.js')
+const reader = require('./readXLSX.js')
 
 var scenes = [];
 
@@ -44,8 +44,8 @@ function getScene(n){
 		return {"description": "No More Scenes", "actions":[]}
 }
 
-function loadSceneFile(filename="data/scenes.csv",callback){
-	csvReader.read(filename, callback)
+function loadSceneFile(filename="data/4-17-22 service plan.xlsx",callback){
+	reader.read(filename, callback)
 }
 
 

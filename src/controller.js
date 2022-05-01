@@ -37,11 +37,28 @@ function setPreviousScene(){
  return  scnMgr.getDisplayText();
 }
 
-async function sendScene(scene){
-	for (var i =0; i < scene.actions.length; i++){
-		var action = scene.actions[i];
-  		await axiosWrapper.VMixSend("/api", action);
-	}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+async function sendScene(scene, i=0){
+    if ( i < scene.actions.length){
+        if ( i > 0 ) await sleep(1000) // this will drive me nuts, but it works
+        var action = scene.actions[i];
+        await axiosWrapper.VMixSend("/api", action, x => {
+            sendScene(scene,++i)
+        });
+    }
+}
+
+async function sendSceneX(scene){
+    for (var i =0; i < scene.actions.length; i++){
+        var action = scene.actions[i];
+        await axiosWrapper.VMixSend("/api", action, callback);
+    }
 }
 
 async function getVMixConfig(filePath,callback){
