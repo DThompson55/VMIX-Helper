@@ -1,6 +1,13 @@
+const ExcelJS = require('exceljs');
+// read from a file
+var filename = "../data/4-17-22 service plan.xlsx";
+const workbook = new Excel.Workbook();
+await workbook.xlsx.readFile(filename);
+// ... use workbook
+
+
 const xmlReader = require("./xmlReader.js")
 var XLSX = require("xlsx");
-var filename = "../data/4-17-22 service plan.xlsx";
 var workbook = XLSX.readFile(filename);
 var reference = workbook.Sheets["Reference"];
 
