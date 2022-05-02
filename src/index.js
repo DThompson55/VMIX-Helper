@@ -1,5 +1,5 @@
 const controller = require("./controller.js")
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, MenuItem, ipcMain } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -74,3 +74,88 @@ ipcMain.on('ffBtnMsg', (event, arg) => {
 ipcMain.on('rewindBtnMsg', (event, arg) => {
    event.returnValue = controller.setFirstScene()
 })
+
+
+
+
+const template = [
+   {
+      label: 'Edit',
+      submenu: [
+         {
+            role: 'undo'
+         },
+         {
+            role: 'redo'
+         },
+         {
+            type: 'separator'
+         },
+         {
+            role: 'cut'
+         },
+         {
+            role: 'copy'
+         },
+         {
+            role: 'paste'
+         }
+      ]
+   },
+   
+   {
+      label: 'View',
+      submenu: [
+         {
+            role: 'reload'
+         },
+         {
+            role: 'toggledevtools'
+         },
+         {
+            type: 'separator'
+         },
+         {
+            role: 'resetzoom'
+         },
+         {
+            role: 'zoomin'
+         },
+         {
+            role: 'zoomout'
+         },
+         {
+            type: 'separator'
+         },
+         {
+            role: 'togglefullscreen'
+         }
+      ]
+   },
+   
+   {
+      role: 'window',
+      submenu: [
+         {
+            role: 'minimize'
+         },
+         {
+            role: 'close'
+         }
+      ]
+   },
+   
+   {
+      role: 'help',
+      submenu: [
+         {
+            label: 'Learn More'
+         }
+      ]
+   }
+]
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
+
+

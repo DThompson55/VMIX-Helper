@@ -2,70 +2,74 @@ const xmlReader = require("./xmlReader.js")
 var XLSX = require("xlsx");
 var filename = "../data/4-17-22 service plan.xlsx";
 var workbook = XLSX.readFile(filename);
-var ws = workbook.Sheets["Reference"];
+var reference = workbook.Sheets["Reference"];
+var plan = workbook.Sheets["Plan"];
 
-
-var referenceBag = {}
-var bagSize = 1;
+var uidBag = {}
+var inputNumberBag = {}
+var uidBagSize = 1;
 var i;
 for (i = 2 ; i < 1000 ; i++){ // skipping the column headers
 try{
-   referenceBag[ws["A"+i].v] = {number:ws['B'+i].v,shortTitle:ws['E'+i].v};
+   uidBag[reference["A"+i].v] = {row:i,number:reference['B'+i].v,shortTitle:reference['E'+i].v, rows:[]};
+   inputNumberBag[reference["B"+i].v] = {row:i,uid:reference['A'+i].v,shortTitle:reference['E'+i].v};
+
 } catch(e){
-	console.log(i,"entries in current spreadsheet");
-	bagSize = i-1;
+	console.log(i,"entries in current reference");
+	uidBagSize = i-1;
 	break;
 }
 }
- 
+
+// add to the UID collection adding a collection of row numbers
+var planBagSize = 1;
+for (i = 2 ; i < 1000 ; i++){ // skipping the column headers
+try{
+	inputNumber = plan['B'+i].v
+	if (inputNumberBag[inputNumber]){
+		uidBag[inputNumberBag[inputNumber].uid].rows.push(i);
+	}
+//   if ( i < 3 ) console.log(planBag)
+} catch(e){
+	console.log(i,"entries in current plan");
+	planBagSize = i-1;
+	break;
+}
+}
+
+function updateRowNumbers(rows,row,refRow){
+	 reference['B'+refRow].v = row.number;
+	 reference['B'+refRow].w = row.number;
+	console.log("update -",row.number,"/",refRow,"/",reference["B"+refRow])
+// 	for (aRow in rows){
+// 	 plan['B'+rows[aRow]].v = row.number;
+// 	 plan['B'+rows[aRow]].w = row.number;
+// //	 console.log("Updating rows",rows[aRow],"to inputNumber",row.number,"plan",plan['B'+rows[aRow]])
+// 	}
+}
+
 xmlReader.getVMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
 	var theSame = true;
-    	for (var i = 0; i < result.vmix.inputs[0].input.length; i++) {
-    		let newValue = result.vmix.inputs[0].input[i].$
-    		let value = referenceBag[result.vmix.inputs[0].input[i].$.key]
-    		if (value) {
-    			if (value.number != newValue.number){console.log("number updated for key",ws["A"+i].v)
-    				ws["B"+i].v = newValue.number;
-    				theSame = false;
-    			}//numbers match
-    			if (value.shortTitle !== newValue.shortTitle){console.log("shortTitle updated for key",ws["A"+i].v)
-					ws["E"+i].v = newValue.shortTitle;
-					theSame = false;
-    			}//numbers match
+	var vmixRows = result.vmix.inputs[0].input
+    	for (var i = 0; i < vmixRows.length; i++) {
+    		let vmixRow = vmixRows[i].$
+    		let uidLookup = uidBag[vmixRow.key]
+//    		console.log("row",vmixRow,"uidLookup = ",uidLookup)
+    		if ((uidLookup)&&(!(vmixRow.number == uidLookup.number))) {
+    				console.log((vmixRow.number == uidLookup.number),vmixRow.number, uidLookup.number)
+
+		    		updateRowNumbers(uidLookup.rows, vmixRow, uidLookup.row)
 		     }else {
-		     	ws["A"+bagSize] = newValue.key;
-		     	ws["B"+bagSize] = newValue.number;
-		     	ws["C"+bagSize] = newValue.type;
-		     	ws["D"+bagSize] = newValue.title;
-		     	ws["E"+bagSize] = newValue.shortTitle;
-		     	console.log("New Properties Added",newValue.key,newValue.number,newValue.shortTitle,"bagSize =",bagSize,"key is",ws["A"+bagSize]);
-		     	bagSize++;
+		     	// we need to add rows, which can be dangerous?
 		     	theSame = false;
 		     }
         }
 
-        //
-        // duplicate tester
-        //
-		var indexBag = {}
-		var shortTitleBag = {}
-		for (var i = 1 ; i < bagSize ; i++){
-		try{
-//			console.log("key ---",ws["A"+i].v,ws["B"+i].v,ws["E"+i].v,i,"bag is",indexBag[ws["B"+i].v])
-		   if (indexBag[ws["B"+i].v]){
-		   		console.log("Duplicate input number",ws["B"+i].v+", key is",ws["A"+i].v)
-		   } else {indexBag[ws["B"+i].v] = ws["B"+i].v}
-		   if (shortTitleBag[ws["E"+i].v]){
-		   		console.log("Duplicate short title",ws["E"+i].v+", key is",ws["A"+i].v)
-		   } else {shortTitleBag[ws["E"+i].v] = ws["B"+i].v}
-		} catch(e){
-			console.log("Error in dup tester",e)
-			break;
-		}
-		}
-
-		console.log("Spreadsheet "+(theSame?"matches":"does not match")+" the VMix configuration");
+      // Writing to our file
+//      console.log()
+		XLSX.writeFile(workbook,'./test.xlsx')
 
     });
 
 
+ 

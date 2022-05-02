@@ -48,7 +48,7 @@ PTZ - 1 PULPIT OVERLAY
 PTZ - 1 PIANO-MUSICIAN
 <position panX="-0.003616571" panY="-0.006430864"/>
 </input>
-<input key="e317f15e-ab49-4340-9015-0bb709587fd0" number="19" type="Virtual" title="PTZ - 1 e med pulpit" shortTitle="1 e med pulpit" state="Paused" position="0" duration="0" loop="False">
+<input key="e317f15e-ab49-4340-9015-0bb709587fd0" number="190" type="Virtual" title="PTZ - 1 e med pulpit" shortTitle="1 e med pulpit" state="Paused" position="0" duration="0" loop="False">
 PTZ - 1 e med pulpit
 <overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
 <position panX="-0.003616571" panY="-0.006430864"/>
@@ -57,7 +57,7 @@ PTZ - 1 e med pulpit
 PTZ - 1 e Tree
 <position panX="-0.003616571" panY="-0.006430864"/>
 </input>
-<input key="556b7e54-5e4a-4eb2-8d4b-5a019384fd5b" number="21" type="Virtual" title="PTZ - 1 e close pulpit" shortTitle="1 e close pulpit" state="Paused" position="0" duration="0" loop="False">
+<input key="556b7e54-5e4a-4eb2-8d4b-5a019384fd5b" number="211" type="Virtual" title="PTZ - 1 e close pulpit" shortTitle="1 e close pulpit" state="Paused" position="0" duration="0" loop="False">
 PTZ - 1 e close pulpit
 <overlay index="0" key="5bc83741-7ccf-42a0-b797-1a37f7062a0d"/>
 <position panX="-0.003616571" panY="-0.006430864"/>
