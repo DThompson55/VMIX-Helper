@@ -1,10 +1,17 @@
+const controller = require("./controller.js")
 const Excel = require('exceljs');
 var filename = "../data/Plan.xlsx";
 const workbook = new Excel.Workbook();
+
+
 async function bookProcess(){
 await workbook.xlsx.readFile(filename);
 let scenes = workbook.getWorksheet('Plan'); //Scenes
 let vmixcfg = workbook.getWorksheet('vMixConfig'); //Scenes
+
+
+controller.getvMixConfig((vMixData)=>{
+console.log("got vmx data",vMixData);
 
 var colNames = []
 
@@ -12,8 +19,6 @@ const row1 = scenes.getRow(1)
 for (i = 1; i < 20; i++ ){
 	colNames[row1.getCell(i).value] = (i + 9).toString(36).toUpperCase();
 }
-
-console.log(colNames);
 
 scenes.dataValidations.add(colNames["Short Name"]+'2:'+colNames["Short Name"]+'9999', {
   type: 'list',
@@ -54,7 +59,8 @@ try {
 
 //scenes.getColumn('E').font = {color: {argb: "FFFF0000"}}
 
-await workbook.xlsx.writeFile("./test.xlsx");
+//await workbook.xlsx.writeFile("./test.xlsx");
+})
 }
 
 bookProcess()

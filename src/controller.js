@@ -1,6 +1,6 @@
 const fs = require('fs')
 const stream = require('stream');
-const Transform = stream.Transform || require('readable-stream').Transform;
+//const Transform = stream.Transform || require('readable-stream').Transform;
 const xmlProxy = require('./xmlReader')
 const xml2js = require('xml2js');
 const parser = new xml2js.Parser();
@@ -8,6 +8,11 @@ const scnMgr = require('./sceneManager.js')
 const axiosWrapper = require('./AxiosWrapper.js')
 const validator = require('./validator.js')
 var mainWindow;
+
+
+const devVMIXDataPath = "./data/4-17-2022-amps fixed.xml"
+
+
 function setMainWindow(x){
     x.webContents.send('FILE_OPEN', "")
     mainWindow = x;
@@ -15,12 +20,6 @@ function setMainWindow(x){
 async function getMainWindow(){
     return mainWindow;
 }
-
-function connectvMix(callback){
-    getvMixConfig('data/4-13-2022.xml', function(data,status){
-            callback(data, status);
-        });
-    }
 
 function loadSceneFile(csvFilePath,callback){
         scnMgr.loadSceneFile(csvFilePath, function(x){
@@ -82,37 +81,46 @@ async function sendSceneX(scene){
 //
 // maybe this is not actually connected yet? not finished yet?
 //
-async function getvMixConfig(filePath, callback){
+async function getvMixConfig(callback){
     if (!process.env.VMIX_ENV){ // if not dev mode
     await axiosWrapper.vMixSend("/api", {}, function (err, data){
             if (err) {
-                callback(data, "Failed to connect to vMix")
+                throw new Exception("Failed to connect to vMix");
             }
             connectionStatus = "connected to vMix";
-            parser.parseString(data, function(data,callback){
-                
+            parser.parseString(data, (err,result) => {
+                if (err){
+                    throw new Exception(e);
+                }
+                connectionStatus = "Dev Mode: vMix test schema loaded";
+                callback(result, connectionStatus)                
             })
     });
     } else {
-            fs.readFile( filePath, function(err, data) {
+            fs.readFile( devVMIXDataPath, function(err, result) {
             if (err) {
-                callback(data, "Dev Mode: vMix test schema failed",filePath);
+                throw new Exception( "Dev Mode: vMix test schema failed ");
             }
-            parser.parseString(data.toString().replace(/&/g,"&amp;"), function(data){
+            //var s = (data.toString().replace(/&/g,"&amp;"))
+            var s = data.toString()
+            parser.parseString(s, (err, result) => {
+                if (err){
+                    throw new Exception(e);
+                }
                 connectionStatus = "Dev Mode: vMix test schema loaded";
-                callback(data, connectionStatus)
-
+                callback(result, connectionStatus)
             })
         });
     }
 }
 
-function validate(vMixData,scenes){
 
+function validate(vMixData,scenes,callback){
+    callback("Called Validate")
 }
 
 
-module.exports = {sendScene: sendScene, setFirstScene: setFirstScene, 
-    setNextScene: setNextScene, setLastScene: setLastScene, loadSceneFile:loadSceneFile, connectvMix:connectvMix,
+module.exports = {sendScene: sendScene, setFirstScene: setFirstScene, getvMixConfig: getvMixConfig,
+    setNextScene: setNextScene, setLastScene: setLastScene, loadSceneFile:loadSceneFile, 
     setPreviousScene: setPreviousScene, setScenes:setScenes, validate: validate}
     

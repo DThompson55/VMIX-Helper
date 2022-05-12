@@ -34,9 +34,8 @@ const createWindow = () => {
 
       console.log("process.env.VMIX_ENV is",process.env.VMIX_ENV)
       if (process.env.VMIX_ENV) {
-        console.log("DEV Mode")
-        let sceneFileName = "data/4-17-22 service plan.xlsx";
-        controller.loadSceneFile(sceneFileName,scenes => {
+           let sceneFileName = "data/4-17-22 service plan.xlsx";
+           controller.loadSceneFile(sceneFileName,scenes => {
            controller.setScenes(scenes);
            mainWindow.webContents.send('FILE_OPEN', "Dev Data:"+sceneFileName)
            checkvMix(scenes);
@@ -47,12 +46,9 @@ const createWindow = () => {
   })
 
 function checkvMix(scenes){
-   console.log("Checking with VMIX")
-   controller.connectvMix((vMixData, status)=>{
+   controller.getvMixConfig((vMixData, status)=>{
       mainWindow.webContents.send('VMIX_STATUS', status);
-      console.log("Checking with VMIX",status)
       controller.validate(vMixData,scenes,(validation)=>{
-         console.log("Validating VMIX",status)
          mainWindow.webContents.send('validation', validation)
       })
    })
@@ -74,7 +70,7 @@ const template = [
                      controller.loadSceneFile(fileObj.filePaths[0], function(scenes){
                      controller.setScenes(scenes);
                      mainWindow.webContents.send('FILE_OPEN', fileObj.filePaths[0])
-                     checkVmix(scenes);
+                     checkvMix(scenes);
                      })
                  }
               })

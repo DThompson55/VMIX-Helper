@@ -11,7 +11,7 @@ var parser = new xml2js.Parser();
 });
 }
 
-getvMixConfig("../data/4-17-2022-amps fixed.xml",console.log)
+//getvMixConfig("../data/4-17-2022-amps fixed.xml",console.log)
 
 
 module.exports = {getvMixConfig:getvMixConfig}

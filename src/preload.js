@@ -16,6 +16,10 @@ window.addEventListener('DOMContentLoaded', () => {
    document.querySelector('#vmix-status').innerHTML = message;
   })
 
+  ipc.on('validation', (event, message) => {
+   document.querySelector('#validation').innerHTML = message;
+  })
+
    const reply = ipc.sendSync('initScenes')
    document.querySelector('#current-scene').innerHTML = reply.currentSceneName
    document.querySelector('#next-scene').innerHTML = reply.nextSceneName
