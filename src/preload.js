@@ -12,11 +12,23 @@ window.addEventListener('DOMContentLoaded', () => {
     replaceText(`${dependency}-version`, process.versions[dependency])
   }
 
+  ipc.on('VMIX_STATUS', (event, message) => {
+   document.querySelector('#vmix-status').innerHTML = message;
+  })
+
    const reply = ipc.sendSync('initScenes')
    document.querySelector('#current-scene').innerHTML = reply.currentSceneName
    document.querySelector('#next-scene').innerHTML = reply.nextSceneName
-   document.querySelector('#init-message').innerHTML = "connected";
+   document.querySelector('#vmix-status').innerHTML = "waiting for connection...";
 
+
+   ipc.on('FILE_OPEN', (event, message) => {
+      document.querySelector('#scene-file').innerHTML = message;
+
+      const reply = ipc.sendSync('rewindBtnMsg')
+      document.querySelector('#current-scene').innerHTML = reply.currentSceneName
+      document.querySelector('#next-scene').innerHTML = reply.nextSceneName
+    })
 
 
   const fwdBtn = document.querySelector('#fwdBtn')

@@ -6,10 +6,28 @@ const xml2js = require('xml2js');
 const parser = new xml2js.Parser();
 const scnMgr = require('./sceneManager.js')
 const axiosWrapper = require('./AxiosWrapper.js')
-
-function init(csvFile,callback){
-	scnMgr.loadSceneFile(csvFile,callback);
+const validator = require('./validator.js')
+var mainWindow;
+function setMainWindow(x){
+    x.webContents.send('FILE_OPEN', "")
+    mainWindow = x;
 }
+async function getMainWindow(){
+    return mainWindow;
+}
+
+function connectvMix(callback){
+    getvMixConfig('data/4-13-2022.xml', function(data,status){
+            callback(data, status);
+        });
+    }
+
+function loadSceneFile(csvFilePath,callback){
+        scnMgr.loadSceneFile(csvFilePath, function(x){
+            console.log("we loaded the scenes")
+            callback(x);
+        });
+    }
 
 function setScenes(x){scnMgr.setScenes(x)}
 
@@ -48,7 +66,7 @@ async function sendScene(scene, i=0){
     if ( i < scene.actions.length){
         if ( i > 0 ) await sleep(1000) // this will drive me nuts, but it works
         var action = scene.actions[i];
-        await axiosWrapper.VMixSend("/api", action, x => {
+        await axiosWrapper.vMixSend("/api", action, x => {
             sendScene(scene,++i)
         });
     }
@@ -57,54 +75,44 @@ async function sendScene(scene, i=0){
 async function sendSceneX(scene){
     for (var i =0; i < scene.actions.length; i++){
         var action = scene.actions[i];
-        await axiosWrapper.VMixSend("/api", action, callback);
+        await axiosWrapper.vMixSend("/api", action, callback);
     }
 }
 
-async function getVMixConfig(filePath,callback){
-    if (!filePath) {
-        console.log("trying API");
-        await axiosWrapper.VMixSend("/api", {}, function (err, data){
+//
+// maybe this is not actually connected yet? not finished yet?
+//
+async function getvMixConfig(filePath, callback){
+    if (!process.env.VMIX_ENV){ // if not dev mode
+    await axiosWrapper.vMixSend("/api", {}, function (err, data){
             if (err) {
-                return console.log(err);
+                callback(data, "Failed to connect to vMix")
             }
-            parser.parseString(data, callback);
+            connectionStatus = "connected to vMix";
+            parser.parseString(data, function(data,callback){
+                
+            })
     });
     } else {
-        console.log("going for the file");
             fs.readFile( filePath, function(err, data) {
             if (err) {
-                return console.log(err);
+                callback(data, "Dev Mode: vMix test schema failed",filePath);
             }
+            parser.parseString(data.toString().replace(/&/g,"&amp;"), function(data){
+                connectionStatus = "Dev Mode: vMix test schema loaded";
+                callback(data, connectionStatus)
 
-            parser.parseString(data.toString().replace(/&/g,"&amp;"), callback);
+            })
         });
-        }
-
-  /**
-        const readStream = fs.createReadStream(filePath);
-        const writeStream = fs.createWriteStream("data/fixed.xml");
-        const fixedXMLStream = new Transform({
-        transform (data, encoding, callback) {
-            const reversedData = data.toString().replace(/&/g,"&amp;");
-            this.push(reversedData);
-            callback();
-            }
-        });
-        readStream.pipe(fixedXMLStream).pipe(writeStream).on('finish', () => {
-            console.log("Finished reversing the contents of ${filePath}");
-        });
-        }
-        **/
     }
-    
+}
+
+function validate(vMixData,scenes){
+
+}
 
 
-getVMixConfig('data/4-13-2022.xml',console.log)
-
-//getVMixConfig('data/4-17-2022-amps fixed.xml',console.log)
-
-module.exports = {init: init, sendScene: sendScene, setFirstScene: setFirstScene, 
-    setNextScene: setNextScene, setLastScene: setLastScene, 
-    setPreviousScene: setPreviousScene, setScenes:setScenes, getVMixConfig: getVMixConfig}
+module.exports = {sendScene: sendScene, setFirstScene: setFirstScene, 
+    setNextScene: setNextScene, setLastScene: setLastScene, loadSceneFile:loadSceneFile, connectvMix:connectvMix,
+    setPreviousScene: setPreviousScene, setScenes:setScenes, validate: validate}
     

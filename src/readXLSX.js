@@ -4,7 +4,7 @@ var workbook;// = XLSX.readFile(filename);
 
 var scenesTemplate =   {"scenes": []};
 var sceneTemplate =    {"number": "INITIAL", description:"INITIAL", "actions":[] }
-var cmdTemplate = {"Function": "blank", "Input": -1}; // these have to be uppercase for VMix
+var cmdTemplate = {"Function": "blank", "Input": -1}; // these have to be uppercase for vMix
 
 
 var scenes = [];
@@ -56,7 +56,7 @@ function buildScenes(ws, callback){
 
 function newScene(){
     let scene = Object.assign({}, sceneTemplate); // new scene
-    console.log("New Scene",scene);
+//    console.log("New Scene",scene);
     scene.number=sceneNumber++;
     scene.description="blank";
     scene.actions = [];
@@ -79,13 +79,13 @@ function addToScene(scene, inputNumber, action, description){
         scene.description = description;
     }
     scene.actions.push(cmd);
-    console.log(scene)
+//    console.log(scene)
 }
 
 function read(xlsxFilePath,callback){
   var workbook = XLSX.readFile(xlsxFilePath);
   var ws = workbook.Sheets["Plan"];
-  console.log("Reading",xlsxFilePath,ws);
+//  console.log("Reading",xlsxFilePath,ws);
 
   buildScenes(ws,callback)
 }

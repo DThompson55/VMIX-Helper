@@ -50,17 +50,17 @@ function updateRowNumbers(rows,row,refRow){
 // 	}
 }
 
-xmlReader.getVMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
+xmlReader.getvMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
 	var theSame = true;
-	var vmixRows = result.vmix.inputs[0].input
-    	for (var i = 0; i < vmixRows.length; i++) {
-    		let vmixRow = vmixRows[i].$
-    		let uidLookup = uidBag[vmixRow.key]
-//    		console.log("row",vmixRow,"uidLookup = ",uidLookup)
-    		if ((uidLookup)&&(!(vmixRow.number == uidLookup.number))) {
-    				console.log((vmixRow.number == uidLookup.number),vmixRow.number, uidLookup.number)
+	var vMixRows = result.vMix.inputs[0].input
+    	for (var i = 0; i < vMixRows.length; i++) {
+    		let vMixRow = vMixRows[i].$
+    		let uidLookup = uidBag[vMixRow.key]
+//    		console.log("row",vMixRow,"uidLookup = ",uidLookup)
+    		if ((uidLookup)&&(!(vMixRow.number == uidLookup.number))) {
+    				console.log((vMixRow.number == uidLookup.number),vMixRow.number, uidLookup.number)
 
-		    		updateRowNumbers(uidLookup.rows, vmixRow, uidLookup.row)
+		    		updateRowNumbers(uidLookup.rows, vMixRow, uidLookup.row)
 		     }else {
 		     	// we need to add rows, which can be dangerous?
 		     	theSame = false;

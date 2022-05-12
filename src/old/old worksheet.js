@@ -1,25 +1,25 @@
 function fixer(){ 
-xmlReader.getVMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
+xmlReader.getvMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
 	var theSame = true;
-    	for (var i = 0; i < result.vmix.inputs[0].input.length; i++) {
-    		let vmixRow = result.vmix.inputs[0].input[i].$
-    		let uidLookup = uidBag[result.vmix.inputs[0].input[i].$.key]
+    	for (var i = 0; i < result.vMix.inputs[0].input.length; i++) {
+    		let vMixRow = result.vMix.inputs[0].input[i].$
+    		let uidLookup = uidBag[result.vMix.inputs[0].input[i].$.key]
     		if (uidLookup) {
-    			if (uidLookup.number != vmixRow.number){console.log("number updated for key",reference["A"+i].v)
-    				reference["B"+i].v = vmixRow.number;
+    			if (uidLookup.number != vMixRow.number){console.log("number updated for key",reference["A"+i].v)
+    				reference["B"+i].v = vMixRow.number;
     				theSame = false;
     			}//numbers match
-    			if (uidLookup.shortTitle !== vmixRow.shortTitle){console.log("shortTitle updated for key",reference["A"+i].v)
-					reference["E"+i].v = vmixRow.shortTitle;
+    			if (uidLookup.shortTitle !== vMixRow.shortTitle){console.log("shortTitle updated for key",reference["A"+i].v)
+					reference["E"+i].v = vMixRow.shortTitle;
 					theSame = false;
     			}//numbers match
 		     }else {
-		     	reference["A"+uidBagSize] = vmixRow.key;
-		     	reference["B"+uidBagSize] = vmixRow.number;
-		     	reference["C"+uidBagSize] = vmixRow.type;
-		     	reference["D"+uidBagSize] = vmixRow.title;
-		     	reference["E"+uidBagSize] = vmixRow.shortTitle;
-		     	console.log("New Properties Added",vmixRow.key,vmixRow.number,vmixRow.shortTitle,"uidBagSize =",uidBagSize,"key is",reference["A"+uidBagSize]);
+		     	reference["A"+uidBagSize] = vMixRow.key;
+		     	reference["B"+uidBagSize] = vMixRow.number;
+		     	reference["C"+uidBagSize] = vMixRow.type;
+		     	reference["D"+uidBagSize] = vMixRow.title;
+		     	reference["E"+uidBagSize] = vMixRow.shortTitle;
+		     	console.log("New Properties Added",vMixRow.key,vMixRow.number,vMixRow.shortTitle,"uidBagSize =",uidBagSize,"key is",reference["A"+uidBagSize]);
 		     	uidBagSize++;
 		     	theSame = false;
 		     }
@@ -45,7 +45,7 @@ xmlReader.getVMixConfig('../data/4-17-2022-amps fixed.xml', function (err, resul
 		}
 		}
 
-		console.log("Spreadsheet "+(theSame?"matches":"does not match")+" the VMix configuration");
+		console.log("Spreadsheet "+(theSame?"matches":"does not match")+" the vMix configuration");
 
     });
 

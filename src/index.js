@@ -1,5 +1,5 @@
 const controller = require("./controller.js")
-const { app, BrowserWindow, Menu, MenuItem, ipcMain } = require('electron');
+const { dialog, app, BrowserWindow, Menu, MenuItem, ipcMain } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -12,13 +12,11 @@ const createWindow = () => {
 //
 // TODO create a flexible initialization file loader
 //
-   controller.init("data/4-17-22 service plan.xlsx",x => {
-   controller.setScenes(x);
 
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 400,
-    height: 600,
+    // width: 400,
+    // height: 600,
     webPreferences:{
       preload: path.join(__dirname, 'preload.js'),
       devTools: false // This will disable dev tools
@@ -30,8 +28,95 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
-})
-};
+
+
+  mainWindow.webContents.on('did-finish-load', ()=>{
+
+      console.log("process.env.VMIX_ENV is",process.env.VMIX_ENV)
+      if (process.env.VMIX_ENV) {
+        console.log("DEV Mode")
+        let sceneFileName = "data/4-17-22 service plan.xlsx";
+        controller.loadSceneFile(sceneFileName,scenes => {
+           controller.setScenes(scenes);
+           mainWindow.webContents.send('FILE_OPEN', "Dev Data:"+sceneFileName)
+           checkvMix(scenes);
+         })
+      } else {
+         console.log("Not DEV Mode")
+      }
+  })
+
+function checkvMix(scenes){
+   console.log("Checking with VMIX")
+   controller.connectvMix((vMixData, status)=>{
+      mainWindow.webContents.send('VMIX_STATUS', status);
+      console.log("Checking with VMIX",status)
+      controller.validate(vMixData,scenes,(validation)=>{
+         console.log("Validating VMIX",status)
+         mainWindow.webContents.send('validation', validation)
+      })
+   })
+}
+
+//-------------------------------
+const template = [
+   {
+      label: 'Menu',
+      submenu: [
+         { label: "open", click(){
+            
+             dialog.showOpenDialog({
+                properties: ['openFile']
+              })
+              .then(function(fileObj) {
+                 // the fileObj has two props 
+                 if (!fileObj.canceled) {
+                     controller.loadSceneFile(fileObj.filePaths[0], function(scenes){
+                     controller.setScenes(scenes);
+                     mainWindow.webContents.send('FILE_OPEN', fileObj.filePaths[0])
+                     checkVmix(scenes);
+                     })
+                 }
+              })
+  // should always handle the error yourself, later Electron release might crash if you don't 
+              .catch(function(err) {
+                 console.error(err)  
+              })
+         }},
+         { label: "exit", click(){
+            app.quit();
+         }}]
+   },
+   {
+      role: 'window',
+      submenu: [
+         {
+            role: 'minimize'
+         },
+         {
+            role: 'close'
+         }
+      ]
+   },
+   
+   {
+      role: 'help',
+      submenu: [
+         {
+            label: 'Learn More'
+         }
+      ]
+   }
+]
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
+
+
+
+
+
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -74,88 +159,12 @@ ipcMain.on('ffBtnMsg', (event, arg) => {
 ipcMain.on('rewindBtnMsg', (event, arg) => {
    event.returnValue = controller.setFirstScene()
 })
+ipcMain.on('getStatus', (event, arg) => {
+   event.returnValue = controller.getStatus()
+})
+ipcMain.on('getFileName', (event, arg) => {
+   event.returnValue = controller.getFileName()
+})
 
-
-
-
-const template = [
-   {
-      label: 'Edit',
-      submenu: [
-         {
-            role: 'undo'
-         },
-         {
-            role: 'redo'
-         },
-         {
-            type: 'separator'
-         },
-         {
-            role: 'cut'
-         },
-         {
-            role: 'copy'
-         },
-         {
-            role: 'paste'
-         }
-      ]
-   },
-   
-   {
-      label: 'View',
-      submenu: [
-         {
-            role: 'reload'
-         },
-         {
-            role: 'toggledevtools'
-         },
-         {
-            type: 'separator'
-         },
-         {
-            role: 'resetzoom'
-         },
-         {
-            role: 'zoomin'
-         },
-         {
-            role: 'zoomout'
-         },
-         {
-            type: 'separator'
-         },
-         {
-            role: 'togglefullscreen'
-         }
-      ]
-   },
-   
-   {
-      role: 'window',
-      submenu: [
-         {
-            role: 'minimize'
-         },
-         {
-            role: 'close'
-         }
-      ]
-   },
-   
-   {
-      role: 'help',
-      submenu: [
-         {
-            label: 'Learn More'
-         }
-      ]
-   }
-]
-
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
 
 
