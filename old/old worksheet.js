@@ -1,5 +1,5 @@
 function fixer(){ 
-xmlReader.getvMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
+vMixConfig.getvMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
 	var theSame = true;
     	for (var i = 0; i < result.vMix.inputs[0].input.length; i++) {
     		let vMixRow = result.vMix.inputs[0].input[i].$

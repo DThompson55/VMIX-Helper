@@ -1,10 +1,8 @@
-//const scenes = require("../data/long_scenes.json")
-//const scenes = require('../data/scenes.json')
-const reader = require('./readXLSX.js')
+const loader = require('./sceneCompiler.js')
 
 var scenes = [];
 
-function setScenes(x){scenes = x}
+function setScenes(x){scenes = x; }
 
 var currentScene = 0;
 
@@ -44,10 +42,14 @@ function getScene(n){
 		return {"description": "No More Scenes", "actions":[]}
 }
 
-function loadSceneFile(filename="data/4-17-22 service plan.xlsx",callback){
-	reader.read(filename, callback)
+function loadSceneFile(workbookPath,callback){ // err, rows, connectionstatus
+	loader.load(workbookPath, callback);
 }
 
+
+function tester(){
+	loadSceneFile(__dirname+"/../data/4-17-22 service plan.xlsx");
+}
 
 module.exports = {getFirstScene: getFirstScene,getNextScene: 
 	getNextScene,getPreviousScene: getPreviousScene,getLastScene: 

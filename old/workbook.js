@@ -1,4 +1,4 @@
-const xmlReader = require("./xmlReader.js")
+const vMixConfig = require("./vMixConfig.js")
 var XLSX = require("xlsx");
 var filename = "../data/Plan.xlsx";
 var workbook = XLSX.readFile(filename);
@@ -23,7 +23,7 @@ for (var i = 0; i < 1000; i++) {
     break}
 }
 
-xmlReader.getvMixConfig('../data/4-17-2022-amps fixed.xml', function (err, vmixSchema) {
+vMixConfig.getvMixConfig('../data/4-17-2022-amps fixed.xml', function (err, vmixSchema) {
 
 if (err) throw new Exception(err);
 	var vMixRows = vmixSchema.vmix.inputs[0].input

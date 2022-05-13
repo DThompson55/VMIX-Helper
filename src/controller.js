@@ -1,34 +1,11 @@
-const fs = require('fs')
-const stream = require('stream');
-//const Transform = stream.Transform || require('readable-stream').Transform;
-const xmlProxy = require('./xmlReader')
-const xml2js = require('xml2js');
-const parser = new xml2js.Parser();
 const scnMgr = require('./sceneManager.js')
 const axiosWrapper = require('./AxiosWrapper.js')
-const validator = require('./validator.js')
-var mainWindow;
 
-
-const devVMIXDataPath = "./data/4-17-2022-amps fixed.xml"
-
-
-function setMainWindow(x){
-    x.webContents.send('FILE_OPEN', "")
-    mainWindow = x;
-}
-async function getMainWindow(){
-    return mainWindow;
-}
-
-function loadSceneFile(csvFilePath,callback){
-        scnMgr.loadSceneFile(csvFilePath, function(x){
-            console.log("we loaded the scenes")
-            callback(x);
-        });
+function loadSceneFile(workbookPath,callback){
+        scnMgr.loadSceneFile(workbookPath, callback);
     }
 
-function setScenes(x){scnMgr.setScenes(x)}
+function setScenes(scenes){scnMgr.setScenes(scenes)}
 
 function setFirstScene(){
  var scene = scnMgr.getFirstScene()
@@ -54,73 +31,36 @@ function setPreviousScene(){
  return  scnMgr.getDisplayText();
 }
 
-
 function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
 
-async function sendScene(scene, i=0){
+
+async function sendScene(scene, i=0){  // yes, this is recursive, so keep that i=0
     if ( i < scene.actions.length){
         if ( i > 0 ) await sleep(1000) // this will drive me nuts, but it works
         var action = scene.actions[i];
-        await axiosWrapper.vMixSend("/api", action, x => {
+        await axiosWrapper.vMixSend("/api", action, (err, ctnxStatus) => {
+            if (err){ console.log(err,ctnxStatus);
+            }
             sendScene(scene,++i)
         });
     }
 }
 
-async function sendSceneX(scene){
-    for (var i =0; i < scene.actions.length; i++){
-        var action = scene.actions[i];
-        await axiosWrapper.vMixSend("/api", action, callback);
-    }
+
+function getvMixStatus(callback){
+    axiosWrapper.getStatus(callback)
 }
 
-//
-// maybe this is not actually connected yet? not finished yet?
-//
-async function getvMixConfig(callback){
-    if (!process.env.VMIX_ENV){ // if not dev mode
-    await axiosWrapper.vMixSend("/api", {}, function (err, data){
-            if (err) {
-                throw new Exception("Failed to connect to vMix");
-            }
-            connectionStatus = "connected to vMix";
-            parser.parseString(data, (err,result) => {
-                if (err){
-                    throw new Exception(e);
-                }
-                connectionStatus = "Dev Mode: vMix test schema loaded";
-                callback(result, connectionStatus)                
-            })
-    });
-    } else {
-            fs.readFile( devVMIXDataPath, function(err, result) {
-            if (err) {
-                throw new Exception( "Dev Mode: vMix test schema failed ");
-            }
-            //var s = (data.toString().replace(/&/g,"&amp;"))
-            var s = data.toString()
-            parser.parseString(s, (err, result) => {
-                if (err){
-                    throw new Exception(e);
-                }
-                connectionStatus = "Dev Mode: vMix test schema loaded";
-                callback(result, connectionStatus)
-            })
-        });
-    }
+function getValidationStatus(callback){
+    callback("Is Valid")
 }
 
 
-function validate(vMixData,scenes,callback){
-    callback("Called Validate")
-}
-
-
-module.exports = {sendScene: sendScene, setFirstScene: setFirstScene, getvMixConfig: getvMixConfig,
+module.exports = {sendScene: sendScene, setFirstScene: setFirstScene,
     setNextScene: setNextScene, setLastScene: setLastScene, loadSceneFile:loadSceneFile, 
-    setPreviousScene: setPreviousScene, setScenes:setScenes, validate: validate}
+    setPreviousScene: setPreviousScene, setScenes:setScenes, getvMixStatus: getvMixStatus, getValidationStatus:getValidationStatus}
     

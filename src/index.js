@@ -32,26 +32,25 @@ const createWindow = () => {
 
   mainWindow.webContents.on('did-finish-load', ()=>{
 
+      // controller.testvMixConnection(status=>{
+
+      // })
       console.log("process.env.VMIX_ENV is",process.env.VMIX_ENV)
       if (process.env.VMIX_ENV) {
-           let sceneFileName = "data/4-17-22 service plan.xlsx";
-           controller.loadSceneFile(sceneFileName,scenes => {
-           controller.setScenes(scenes);
-           mainWindow.webContents.send('FILE_OPEN', "Dev Data:"+sceneFileName)
-           checkvMix(scenes);
-         })
-      } else {
-         console.log("Not DEV Mode")
+         console.log("Using Test/Dev Service Plan")
+         loadSceneFile(__dirname+"/../data/4-17-22 service plan.xlsx")
       }
   })
 
-function checkvMix(scenes){
-   controller.getvMixConfig((vMixData, status)=>{
-      mainWindow.webContents.send('VMIX_STATUS', status);
-      controller.validate(vMixData,scenes,(validation)=>{
-         mainWindow.webContents.send('validation', validation)
+function loadSceneFile(sceneFilePath){
+   controller.loadSceneFile(sceneFilePath, (err,scenes, msg) => {
+      mainWindow.webContents.send('validation', msg)
+      controller.setScenes(scenes);
+      mainWindow.webContents.send('FILE_OPEN', sceneFilePath)
+      controller.getvMixStatus((err,status)=>{
+          mainWindow.webContents.send('VMIX_STATUS', status);
       })
-   })
+      })
 }
 
 //-------------------------------
@@ -67,11 +66,7 @@ const template = [
               .then(function(fileObj) {
                  // the fileObj has two props 
                  if (!fileObj.canceled) {
-                     controller.loadSceneFile(fileObj.filePaths[0], function(scenes){
-                     controller.setScenes(scenes);
-                     mainWindow.webContents.send('FILE_OPEN', fileObj.filePaths[0])
-                     checkvMix(scenes);
-                     })
+                     loadSceneFile(fileObj.filePaths[0]);
                  }
               })
   // should always handle the error yourself, later Electron release might crash if you don't 

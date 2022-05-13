@@ -1,4 +1,4 @@
-const xmlReader = require("./xmlReader.js")
+const vMixConfig = require("./vMixConfig.js")
 var XLSX = require("xlsx");
 var filename = "../data/4-17-22 service plan.xlsx";
 var workbook = XLSX.readFile(filename);
@@ -50,7 +50,7 @@ function updateRowNumbers(rows,row,refRow){
 // 	}
 }
 
-xmlReader.getvMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
+vMixConfig.getvMixConfig('../data/4-17-2022-amps fixed.xml', function (err, result) {
 	var theSame = true;
 	var vMixRows = result.vMix.inputs[0].input
     	for (var i = 0; i < vMixRows.length; i++) {
