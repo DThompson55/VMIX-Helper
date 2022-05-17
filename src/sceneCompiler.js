@@ -7,7 +7,7 @@ var scenes = [];
 var sceneNumber = 1;
 
 function buildScenes(rows, callback){
-    console.log(callback,"------------------")
+    console.log("BuildScenes rows is",rows.length)
     for (var i = 0 ; i < rows.length; i++){
         row = rows[i];
         let scene = newScene();
@@ -21,14 +21,20 @@ function buildScenes(rows, callback){
 //        console.log(row, row.inputNumber, row.preAction, row.action, row.orderOfService)
 
         addToScene(scene,row.inputNumber,row.action,description)    // this would add the current row.action
-        try {
-        addToScene(scene,row[i+1].inputNumber,row[i+1].preAction)   // this would add the new preview usually
-        if (nextrow.PreAction === "Overlay"){
-            i++;
-            addToScene(scene,row[i+1].inputNumber,row[i+1].preAction)   // this would add the new preview usually
+
+        if ( (i+1) <= rows.length ) {
+        i++
+        row = rows[i];
+            addToScene(scene,row.inputNumber,row.preAction)   // this would add the new preview usually
+        }  
+        if ( row.preAction === "Overlay" ){
+            if ( (i+1) <= rows.length ) {
+            i++
+            row = rows[i];
+                addToScene(scene,row.inputNumber,row.preAction)   // this would add the new preview usually
+            }  
         }
-    }   catch(e){}
-    }
+    }   
     callback(null,scenes);
 }
 
