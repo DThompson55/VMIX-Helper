@@ -20,10 +20,11 @@ async function vMixSend(endpoint,params,callback) {
 
 async function getStatus(callback){
   try{
-    await axiosWrapper.vMixSend("/api", {}, (err, connectionStatus) => {
+    await vMixSend("/api", {}, (err, connectionStatus) => {
        callback(null, connectionStatus)                
     })
     } catch (err){
+      console.log(err);
       callback(err.message, "vMix not Connected")
     }
 }
