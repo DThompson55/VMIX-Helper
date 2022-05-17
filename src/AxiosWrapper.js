@@ -19,10 +19,18 @@ async function vMixSend(endpoint,params,callback) {
   } else {
     callback(null,vmixConnectionStatus,null);
   }
+} 
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
+
 
 async function getStatus(callback){
   try{
+    await sleep(1000)
     await vMixSend("/api", {}, (err, connectionStatus) => {
        callback(null, connectionStatus)                
     })

@@ -39,11 +39,10 @@ function sleep(ms) {
 
 
 async function sendScene(scene, i=0){  // yes, this is recursive, so keep that i=0
-    console.log("Sending Scene",scene,i,scene.actions.length);
     if ( i < scene.actions.length){
+        console.log("SendScene Recursion",i,scene.actions[i]);
         if ( i > 0 ) await sleep(1000) // this will drive me nuts, but it works
         var action = scene.actions[i];
-        console.log("Sending Scene2",scene.actions[i]);
         await axiosWrapper.vMixSend("/api", action, (err, ctnxStatus) => {
             console.log("Sent Scene",ctnxStatus);
             if (err){ console.log(err,ctnxStatus);
