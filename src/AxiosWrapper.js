@@ -7,14 +7,14 @@ async function vMixSend(endpoint,params,callback) {
   if (connected){
       try {
         const response = await axios.get(host+endpoint, {params});
-        callback(null,vmixConnectionStatus);
+        callback(null,vmixConnectionStatus,response);
       } catch (error) {
         connected = false;
         vmixConnectionStatus = "vMix not Connected"
-        callback(error.message,vmixConnectionStatus);
+        callback(error.message,vmixConnectionStatus,null);
       }
   } else {
-    callback(null,vmixConnectionStatus);
+    callback(null,vmixConnectionStatus,null);
   }
 }
 

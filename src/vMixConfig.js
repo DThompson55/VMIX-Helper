@@ -9,14 +9,16 @@ async function getvMixConfig(callback){
      console.log("Getting Vmix Config:")
     if (!process.env.VMIX_ENV){ // if not dev mode
     console.log("vMix Live Mode:")
-    await axiosWrapper.vMixSend("/api", {}, function (err, connectionStatus){
-            if (err) {
-                throw new Error("Failed to connect to vMix");
-            }
-            parser.parseString(data, (err,result) => {
+    await axiosWrapper.vMixSend("/api", {}, function (err, connectionStatus, response){
+            // if (err) {
+            //     throw (err);
+            // }
+            // try {
+            parser.parseString(response.data, (err,result) => {
                 connectionStatus = "Dev Mode: vMix test schema loaded";
                 callback(err,result, connectionStatus)                
             })
+//        } catch (e) {throw(e)}
     });
     } else {
         console.log("vMix Dev File Mode:")
