@@ -54,5 +54,9 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
     "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "electron": "18.0.3"
-  }
+  },
+  "repository": {
+  "type": "git",
+  "url": "git://github.com/DThompson55/VMIX-Helper.git"
+}
 }
