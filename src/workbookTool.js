@@ -1,12 +1,11 @@
 const Excel = require('exceljs');
 const workbook = new Excel.Workbook();
-const vMixConfig = require("./vMixConfig.js")
 
-
+const verbose = false;
 
 //tester();
 
-async function validate(scenesSheet, vmixcfgSheet, callback){
+async function validate(scenesSheet, vmixcfgSheet, vMixCfg, callback){
 
 var keyBag = []
 var numberBag = []
@@ -15,19 +14,16 @@ var shortTitleBag = []
 if (!scenesSheet) throw new Error("Plan Sheet is missing");
 if (!vmixcfgSheet) throw new Error("vMixConfig Sheet is missing");
 
-vMixConfig.getvMixConfig((err,vMixData)=>{
 var mismatch = false;
 
-if (err) {throw (err);}
-
-for (var i = 0; i < vMixData.vmix.inputs[0].input.length; i++) {
-	let row = vMixData.vmix.inputs[0].input[i].$;
-	if (keyBag[row.key]){console.log("Duplcate key from vMix at row:",i,"key:",row.key);mismatch=true;}
-	if (numberBag[row.number]){console.log("Duplcate number from vMix at row:",i,"key:",row.key);mismatch=true;}
-	if (shortTitleBag[row.shortTitle]){console.log("Duplcate shortTitle from vMix at row:",i,"key:",row.key);mismatch=true;}
-	keyBag[vMixData.vmix.inputs[0].input[i].$.key] = row;
-	numberBag[vMixData.vmix.inputs[0].input[i].$.number] = "OK";
-	shortTitleBag[vMixData.vmix.inputs[0].input[i].$.shortTitle] = "OK";
+for (var i = 0; i < vMixCfg.vmix.inputs[0].input.length; i++) {
+	let row = vMixCfg.vmix.inputs[0].input[i].$;
+	if (keyBag[row.key]){if (verbose) console.log("Duplcate key from vMix at row:",i,"key:",row.key);mismatch=true;}
+	if (numberBag[row.number]){if (verbose) console.log("Duplcate number from vMix at row:",i,"key:",row.key);mismatch=true;}
+	if (shortTitleBag[row.shortTitle]){if (verbose) console.log("Duplcate shortTitle from vMix at row:",i,"key:",row.key);mismatch=true;}
+	keyBag[vMixCfg.vmix.inputs[0].input[i].$.key] = row;
+	numberBag[vMixCfg.vmix.inputs[0].input[i].$.number] = "OK";
+	shortTitleBag[vMixCfg.vmix.inputs[0].input[i].$.shortTitle] = "OK";
 }
 
 var excelKeyBag = []
@@ -41,9 +37,9 @@ for (var i = 2; i < 999; i++) {
 	var shortTitle = vmixcfgSheet.getRow(i).getCell("E").value
 	var number = vmixcfgSheet.getRow(i).getCell("B").value
 
-	if (excelKeyBag[key]){console.log("Duplcate key in spreadsheet at row:",i,"key:",key);mismatch=true;}
-	if (numberBag[number]){console.log("Duplcate number in spreadsheet at row:",i,"key:",key);mismatch=true;}
-	if (shortTitleBag[shortTitle]){console.log("Duplcate shortTitle in spreadsheet at row:",i,"key:",key);mismatch=true;}
+	if (excelKeyBag[key]){if (verbose) console.log("Duplcate key in spreadsheet at row:",i,"key:",key);mismatch=true;}
+	if (numberBag[number]){if (verbose) console.log("Duplcate number in spreadsheet at row:",i,"key:",key);mismatch=true;}
+	if (shortTitleBag[shortTitle]){if (verbose) console.log("Duplcate shortTitle in spreadsheet at row:",i,"key:",key);mismatch=true;}
 
 	excelKeyBag[key] = "OK";
 	numberBag[number] = "OK";
@@ -54,39 +50,38 @@ for (var i = 2; i < 999; i++) {
 		if (keyBag[key].shortTitle == shortTitle) {
 			if (keyBag[key].number == number) {
 				failed = false;
-			} else { console.log("Number Mismatch, Plan Row",i,"numbers:",
+			} else { if (verbose) console.log("Number Mismatch, Plan Row",i,"numbers:",
 				"plan:",keyBag[key].number,
 				"vMix:",number,
 				"key:",key);
 				mismatch = true; }
-		} else { console.log("Title  Mismatch, Plan Row",i,"numbers:",
+		} else { if (verbose) console.log("Title  Mismatch, Plan Row",i,"numbers:",
 				"plan:",keyBag[key].shortTitle,
 				"vMix:",shortTitle,
 				"key:",key);
 				mismatch = true; }
 		delete keyBag[key]
-	} else { console.log("Key Mismatch,    Plan Row",i,
+	} else { if (verbose) console.log("Key Mismatch,    Plan Row",i,
 				"key:",key);
 				mismatch = true; }
 	}
 if ( Object.keys(keyBag).length >0 ){ mismatch = true;
-  console.log("Extra Keys from vMix", Object.keys(keyBag).length )
+  if (verbose) console.log("Extra Keys from vMix", Object.keys(keyBag).length )
   for (keys in keyBag){
-	  console.log(keyBag[keys].key)
+	  if (verbose) console.log(keyBag[keys].key)
 	}
 }
   console.log((mismatch)?"vMix Doesn't Match Spreadsheet":"vMix Matches Spreadsheet")
 
 	callback(null,(mismatch)?"vMix Doesn't Match Spreadsheet":"vMix Matches Spreadsheet")
-})
 }
 
 //--------------------------------------------------
-async function loadWorkbook(workbookPath, callback){
+async function loadWorkbook(workbookPath, vMixCfg, callback){
 await workbook.xlsx.readFile(workbookPath);
 let scenesSheet = workbook.getWorksheet('Plan'); //Scenes
 let vmixcfgSheet = workbook.getWorksheet('vMixConfig'); //Scenes
-await validate(scenesSheet,vmixcfgSheet, (err, mismatch)=>{
+await validate(scenesSheet,vmixcfgSheet, vMixCfg, (err, mismatch)=>{
 var rows = []
 var columnNames = []
 
@@ -172,9 +167,9 @@ callback(null, rows, mismatch);
 })
 }
 
-function tester(){
-var workbookPath = _dirname+"/../data/Plan.xlsx";
-validate(workbookPath,console.log)
-}
+// function tester(){
+// var workbookPath = _dirname+"/../data/Plan.xlsx";
+// validate(workbookPath, null, console.log)
+// }
 
 module.exports = {load:loadWorkbook}

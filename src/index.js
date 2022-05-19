@@ -32,24 +32,22 @@ const createWindow = () => {
 
   mainWindow.webContents.on('did-finish-load', ()=>{
 
-      // controller.testvMixConnection(status=>{
+    controller.connect((ctx)=>{
 
-      // })
-      console.log("process.env.VMIX_ENV is",process.env.VMIX_ENV)
-      if (process.env.VMIX_ENV) {
-         console.log("Using Test/Dev Service Plan")
-         loadSceneFile(__dirname+"/../data/4-17-22 service plan.xlsx")
-      }
-  })
+    console.log("index finds status is",ctx.vMixStatus);
+    mainWindow.webContents.send('VMIX_STATUS', ctx.vMixStatus);
 
-function loadSceneFile(sceneFilePath){
-   controller.loadSceneFile(sceneFilePath, (err,scenes, msg) => {
-      mainWindow.webContents.send('validation', msg)
+    console.log("Dev service plan",process.env.VMIX_ENV)
+    if (process.env.VMIX_ENV) {
+      console.log("Using Test/Dev Service Plan")
+      loadSceneFile(__dirname+"/../data/4-17-22 service plan.xlsx",ctx.vMixCfg)
+    }
+
+function loadSceneFile(sceneFilePath, vMixCfg){
+   controller.loadSceneFile(sceneFilePath, vMixCfg, (err,scenes, sceneFileValidation) => {
+      mainWindow.webContents.send('validation', sceneFileValidation)
       controller.setScenes(scenes);
       mainWindow.webContents.send('FILE_OPEN', sceneFilePath)
-      controller.getvMixStatus((err,status)=>{
-          mainWindow.webContents.send('VMIX_STATUS', status);
-      })
       })
 }
 
@@ -66,7 +64,7 @@ const template = [
               .then(function(fileObj) {
                  // the fileObj has two props 
                  if (!fileObj.canceled) {
-                     loadSceneFile(fileObj.filePaths[0]);
+                     loadSceneFile(fileObj.filePaths[0], ctx.vMixCfg);
                  }
               })
   // should always handle the error yourself, later Electron release might crash if you don't 
@@ -102,11 +100,8 @@ const template = [
 
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
-
-
-
-
-
+})
+})
 }
 
 // This method will be called when Electron has finished

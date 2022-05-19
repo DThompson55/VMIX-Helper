@@ -21,8 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
   })
 
    const reply = ipc.sendSync('initScenes')
-   document.querySelector('#current-scene').innerHTML = reply.currentSceneName
-   document.querySelector('#next-scene').innerHTML = reply.nextSceneName
+   setDescriptions(reply)
    document.querySelector('#vmix-status').innerHTML = "waiting for connection...";
 
 
@@ -30,17 +29,20 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('#scene-file').innerHTML = message;
 
       const reply = ipc.sendSync('rewindBtnMsg')
-      document.querySelector('#current-scene').innerHTML = reply.currentSceneName
-      document.querySelector('#next-scene').innerHTML = reply.nextSceneName
+      setDescriptions(reply)
+
     })
 
+  function setDescriptions(reply){
+    document.querySelector('#current-scene').innerHTML = reply.currentSceneName
+    document.querySelector('#next-scene').innerHTML = reply.nextSceneName
+  }
 
   const fwdBtn = document.querySelector('#fwdBtn')
   fwdBtn.addEventListener('click', () => {
    const reply = ipc.sendSync('fwdBtnMsg')
 
-   document.querySelector('#current-scene').innerHTML = reply.currentSceneName
-   document.querySelector('#next-scene').innerHTML = reply.nextSceneName
+  setDescriptions(reply)
   })
 
   fwdBtn.addEventListener('mousedown', () => {
@@ -56,8 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const backBtn = document.querySelector('#backBtn')
   backBtn.addEventListener('click', () => {
    const reply = ipc.sendSync('backBtnMsg')
-   document.querySelector('#current-scene').innerHTML = reply.currentSceneName
-   document.querySelector('#next-scene').innerHTML = reply.nextSceneName
+  setDescriptions(reply)
   })
   backBtn.addEventListener('mousedown', () => {
     var image_id = backBtn;
@@ -72,9 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const ffBtn = document.querySelector('#ffBtn')
   ffBtn.addEventListener('click', () => {
    const reply = ipc.sendSync('ffBtnMsg')
-
-   document.querySelector('#current-scene').innerHTML = reply.currentSceneName
-   document.querySelector('#next-scene').innerHTML = reply.nextSceneName
+   setDescriptions(reply)
   })
 
   ffBtn.addEventListener('mousedown', () => {
@@ -90,9 +89,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const rewindBtn = document.querySelector('#rewindBtn')
   rewindBtn.addEventListener('click', () => {
    const reply = ipc.sendSync('rewindBtnMsg')
-
-   document.querySelector('#current-scene').innerHTML = reply.currentSceneName
-   document.querySelector('#next-scene').innerHTML = reply.nextSceneName
+   setDescriptions(reply)
   })
 
   rewindBtn.addEventListener('mousedown', () => {

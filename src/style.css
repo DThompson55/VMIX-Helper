@@ -11,7 +11,19 @@
 }
 
 .column {
-  flex: 25%;
+  flex: 40%;
 }
 
+.one-line-no-wrap {
+  height: 48px;
+   overflow-y:hidden; 
+   width:100%;
+}
 
+.hr {
+        position: relative;
+        top: 1px;
+        border: none;
+        height: 10px;
+        margin-bottom: 1px;
+    }

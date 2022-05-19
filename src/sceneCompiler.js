@@ -7,33 +7,35 @@ var scenes = [];
 var sceneNumber = 1;
 
 function buildScenes(rows, callback){
-    console.log("BuildScenes rows is",rows.length)
+    console.log("Row Length reported",rows.length)
+
     for (var i = 0 ; i < rows.length; i++){
         row = rows[i];
-        let scene = newScene();
-        var description = (row.orderOfService+" "+row.title+" "+row.person).trim();
-        if (description.length < 1){
-            description = row.shortTitle;
-        }
-        description = row.inputNumber+" - "+description
-        // console.log(">>>"+description+"<<<");
-        // break;
-//        console.log(row, row.inputNumber, row.preAction, row.action, row.orderOfService)
+        try {
+            let scene = newScene();
+            var description = (row.orderOfService+" "+row.title+" "+row.person).trim();
+            if (description.length < 1){
+                description = row.shortTitle;
+            }
+            description = (i+1)+"-"+row.inputNumber+" - "+description
+            addToScene(scene,row.inputNumber,row.action,description)    // this would add the current row.action
 
-        addToScene(scene,row.inputNumber,row.action,description)    // this would add the current row.action
 
-        if ( (i+1) <= rows.length ) {
-        i++
-        row = rows[i];
-            addToScene(scene,row.inputNumber,row.preAction)   // this would add the new preview usually
-        }  
-        if ( row.preAction === "Overlay" ){
-            if ( (i+1) <= rows.length ) {
-            i++
-            row = rows[i];
-                addToScene(scene,row.inputNumber,row.preAction)   // this would add the new preview usually
-            }  
-        }
+            for (var j = 1; j < 3; j++ ) {
+                if ( (i+j) < rows.length ) {   
+                    row = rows[i+j]
+                    if ( row.preAction.indexOf("Overlay")==0) {
+                    row = rows[i+j];
+                        addToScene(scene,row.inputNumber,row.preAction)   // this would add the new preview usually
+                        i++; //because Overlays never become scenes themselves
+                        j--; // bump the index down again
+                    } else {
+                        addToScene(scene,row.inputNumber,row.preAction)   
+                        break;
+                    } 
+                }
+            }
+        } catch(e) {console.log("SceneCompiler.BuildScenes",i,e.message)}
     }   
     callback(null,scenes);
 }
@@ -42,7 +44,6 @@ function buildScenes(rows, callback){
 
 function newScene(){
     let scene = Object.assign({}, sceneTemplate); // new scene
-//    console.log("New Scene",scene);
     scene.number=sceneNumber++;
     scene.description="blank";
     scene.actions = [];
@@ -65,11 +66,10 @@ function addToScene(scene, inputNumber, action, description){
         scene.description = description;
     }
     scene.actions.push(cmd);
-//    console.log(scene)
 }
 
-async function load(workbookPath, callback){
-  await workbookTool.load(workbookPath,(err, rows, msg)=>{
+async function load(workbookPath, vMixCfg, callback){
+  await workbookTool.load(workbookPath, vMixCfg, (err, rows, msg)=>{
   buildScenes(rows, (err,scenes) =>{
     callback(null,scenes,msg)
   })

@@ -28,12 +28,18 @@ return getScene(currentScene)
 
 
 function getDisplayText(){
-return {"currentSceneName":getScene(currentScene).description,"nextSceneName":getScene(currentScene+1).description}
+return {"currentSceneName":getScene(currentScene).description,
+         "nextSceneName":getScene(currentScene+1).description,
+          "buttons":getButtons(currentScene)}
 }
 
-function getFullDisplayText(){
-return {"currentSceneName":getScene(currentScene),"nextSceneName":getScene(currentScene+1)}
-}
+function getButtons(n){
+	var retval = retval = [true, true, true, true ]
+	if ((n == 0 ) && (n == scenes.length)) { retval = [false, false, false, false ]}
+    else{ if (n == 0 )                     { retval = [false, false, true,  true  ]}
+    else{ if ((n == scenes.length))        { retval = [true,  true,  false, false ]}
+}}}
+
 
 function getScene(n){
 	if (n < scenes.length)
@@ -42,16 +48,15 @@ function getScene(n){
 		return {"description": "No More Scenes", "actions":[]}
 }
 
-function loadSceneFile(workbookPath,callback){ // err, rows, connectionstatus
-	loader.load(workbookPath, callback);
+function loadSceneFile(workbookPath, vMixCfg, callback){ // err, rows, connectionstatus
+	loader.load(workbookPath, vMixCfg, callback);
 }
 
 
-function tester(){
-	loadSceneFile(__dirname+"/../data/4-17-22 service plan.xlsx");
-}
+// function tester(){
+// 	loadSceneFile(__dirname+"/../data/4-17-22 service plan.xlsx");
+// }
 
 module.exports = {getFirstScene: getFirstScene,getNextScene: 
 	getNextScene,getPreviousScene: getPreviousScene,getLastScene: 
-	getLastScene,getDisplayText: getDisplayText,getFullDisplayText: 
-	getFullDisplayText,loadSceneFile: loadSceneFile, setScenes:setScenes}
+	getLastScene,getDisplayText: getDisplayText,loadSceneFile: loadSceneFile, setScenes:setScenes}
