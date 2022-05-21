@@ -7,6 +7,7 @@ const requestListener = function (req, res) {
     res.setHeader("Content-Type", "text/xml");
     res.writeHead(200);
     res.end(vMixCfg);
+}
 
 const server = http.createServer(requestListener);
 server.listen(port, host, () => {

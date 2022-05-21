@@ -5,7 +5,7 @@ const verbose = false;
 
 //tester();
 
-async function validate(scenesSheet, vmixcfgSheet, vMixCfg, callback){
+function validate(scenesSheet, vmixcfgSheet, vMixCfg, callback){
 
 var keyBag = []
 var numberBag = []

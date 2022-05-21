@@ -2,6 +2,7 @@ const scnMgr = require('./sceneManager.js')
 const vMix = require('./vMixHelper.js')
 
 function connect(callback){ //{vMixCfg:result, vMixStatus:"Connected"}
+console.log("CONNECTING...");
     vMix.connect(callback)
 }
 
@@ -36,13 +37,14 @@ function setPreviousScene(){
 }
 
 async function sendScene(scene, i=0){  // yes, this is recursive, so keep that i=0
+    try{
     if ( i < scene.actions.length){
         var action = scene.actions[i];
-        await vMix.send( action, (httpResp, vMixStatus) => {
-            if ( httpResp.status != "200") throw new Error(httpResp.statusText);
-            sendScene(scene,++i)
-        });
+        response = await vMix.send( action )
+        if ( response.status != "200") throw new Error(response.statusText);
+        sendScene(scene,++i)
     }
+  } catch (err) {console.log(err.message)}
 }
 
 

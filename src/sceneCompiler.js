@@ -69,12 +69,15 @@ function addToScene(scene, inputNumber, action, description){
 }
 
 async function load(workbookPath, vMixCfg, callback){
+try{
   await workbookTool.load(workbookPath, vMixCfg, (err, rows, msg)=>{
   buildScenes(rows, (err,scenes) =>{
     callback(null,scenes,msg)
   })
 })
-}
+}catch(err){console.log(err.message);}
+} 
+
 
 
 module.exports = {load: load}

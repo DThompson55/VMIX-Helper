@@ -2,6 +2,8 @@ const controller = require("./controller.js")
 const { dialog, app, BrowserWindow, Menu, MenuItem, ipcMain } = require('electron');
 const path = require('path');
 
+const isMac = process.platform === 'darwin'
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   // eslint-disable-line global-require
@@ -29,19 +31,7 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-
   mainWindow.webContents.on('did-finish-load', ()=>{
-
-    controller.connect((ctx)=>{
-
-    console.log("index finds status is",ctx.vMixStatus);
-    mainWindow.webContents.send('VMIX_STATUS', ctx.vMixStatus);
-
-    console.log("Dev service plan",process.env.VMIX_ENV)
-    if (process.env.VMIX_ENV) {
-      console.log("Using Test/Dev Service Plan")
-      loadSceneFile(__dirname+"/../data/4-17-22 service plan.xlsx",ctx.vMixCfg)
-    }
 
 function loadSceneFile(sceneFilePath, vMixCfg){
    controller.loadSceneFile(sceneFilePath, vMixCfg, (err,scenes, sceneFileValidation) => {
@@ -50,14 +40,41 @@ function loadSceneFile(sceneFilePath, vMixCfg){
       mainWindow.webContents.send('FILE_OPEN', sceneFilePath)
       })
 }
+    controller.connect((ctx)=>{
+
+    console.log("index finds status is",ctx.vMixStatus);
+    
+    mainWindow.webContents.send('VMIX_STATUS', ctx.vMixStatus);
+
+    console.log("Dev service plan",process.env.VMIX_ENV)
+    if (process.env.VMIX_ENV) {
+      console.log("Using Test/Dev Service Plan")
+      loadSceneFile(__dirname+"/../data/4-17-22 service plan.xlsx",ctx.vMixCfg)
+    }
+
+// if (isMac) {
+//     mainMenuTemplate.unshift({label: ''});
+// }
+
+   console.log("Building Menus");
 
 //-------------------------------
 const template = [
    {
-      label: 'Menu',
-      submenu: [
-         { label: "open", click(){
-            
+      label: 'App',
+      submenu: [         
+           { label: "About...", click(){ 
+            console.log("About Box");
+              }} 
+       ]},
+     {
+      label: 'File',
+      submenu: [         
+           { 
+
+            accelerator: process.platform === 'darwin' ? 'Cmd+O' : 'Ctrl+O',
+   
+            label: "Open...", click(){            
              dialog.showOpenDialog({
                 properties: ['openFile']
               })
@@ -72,36 +89,21 @@ const template = [
                  console.error(err)  
               })
          }},
-         { label: "exit", click(){
+         { label: "Exit", click(){
             app.quit();
          }}]
-   },
-   {
-      role: 'window',
-      submenu: [
-         {
-            role: 'minimize'
-         },
-         {
-            role: 'close'
-         }
-      ]
-   },
-   
-   {
-      role: 'help',
-      submenu: [
-         {
-            label: 'Learn More'
-         }
-      ]
    }
 ]
+   const menu = Menu.buildFromTemplate(template)
+   Menu.setApplicationMenu(menu)
+//-------------------------------
 
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
-})
-})
+
+
+
+
+   })
+ })
 }
 
 // This method will be called when Electron has finished

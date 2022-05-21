@@ -22,23 +22,26 @@ return getScene(currentScene)
 }
 
 function getLastScene(){
-currentScene = scenes.length-1;
+currentScene = (scenes.length == 0)?0:scenes.length-1;
 return getScene(currentScene)
 }
 
 
 function getDisplayText(){
 return {"currentSceneName":getScene(currentScene).description,
-         "nextSceneName":getScene(currentScene+1).description,
-          "buttons":getButtons(currentScene)}
+        "nextSceneName":getScene(currentScene+1).description,
+        "buttons":getButtons(currentScene)}
 }
 
-function getButtons(n){
-	var retval = retval = [true, true, true, true ]
-	if ((n == 0 ) && (n == scenes.length)) { retval = [false, false, false, false ]}
-    else{ if (n == 0 )                     { retval = [false, false, true,  true  ]}
-    else{ if ((n == scenes.length))        { retval = [true,  true,  false, false ]}
-}}}
+function getButtons(n){ // 1 = fwd, 2 = back, 4 = ff, 8 = rw
+	var retval = 0; 
+	if (n == scenes.length) { retval = 0xf}
+    else{ if (n == 0 )                     { retval = 0xa}
+    else{ if ((n == scenes.length-1))        { retval = 0x5}
+	}
+	}
+	return retval;
+}
 
 
 function getScene(n){

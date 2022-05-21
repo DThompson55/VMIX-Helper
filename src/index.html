@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> 
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="style.css">
-    <script defer src="render.js"></script> 
   </head>
   <body>
     <script type = "text/javascript"> 
@@ -22,12 +21,15 @@
     </script>
     <div class="title is-2">vMix Sequencer</div>
     <div class="one-line-no-wrap">Displaying:&nbsp;<span id="current-scene"></span></div>
-    
-    <div class="row" width=400px>
-      <span class="column"><img id="rewindBtn" src="images/rewindBtn.png" border="0" width="100" height="100"></span>
-      <span class="column"><img id="backBtn" src="images/backBtn.png" border="0" width="100" height="100"></span>
-      <span class="column"><img id="fwdBtn" src="images/fwdBtn.png"  border="0" width="100" height="100"></span>
-      <span class="column"><img id="ffBtn" src="images/ffBtn.png" border="0" width="100" height="100"></span>
+     <div id="no-file-loaded" class="title is-3" width=400px>
+     <span>No Scene File Loaded</span>
+     </div>
+    <div id="buttons" class="row" width=400px style = "display:none";
+>
+      <span class="column"><img id="rewindBtn" src="images/rewindBtn_Disabled.png" border="0" width="100" height="100"></span>
+      <span class="column"><img id="backBtn" src="images/backBtn_Disabled.png" border="0" width="100" height="100"></span>
+      <span class="column"><img id="fwdBtn" src="images/fwdBtn_Disabled.png"  border="0" width="100" height="100"></span>
+      <span class="column"><img id="ffBtn" src="images/ffBtn_Disabled.png" border="0" width="100" height="100"></span>
     </div>
 
     <div class="one-line-no-wrap">Preview:&nbsp;<span class="one-line-no-wrap" id="next-scene"></span></div>
