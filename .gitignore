@@ -11,6 +11,8 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 #test results
 data/updatedPlan.xlsx
+updatedPlan.xlsx
+test.xlsx
 src/*.xlsx
 
 #MacOS

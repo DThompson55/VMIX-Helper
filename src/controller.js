@@ -14,37 +14,34 @@ function setScenes(scenes){scnMgr.setScenes(scenes)}
 
 function setFirstScene(){
  var scene = scnMgr.getFirstScene()
- sendScene(scene)
+ try { sendScene(scene) }catch(c){return {}}
  return  scnMgr.getDisplayText();
 }
 
 function setLastScene(){
  var scene = scnMgr.getLastScene()
- sendScene(scene)
+ try { sendScene(scene) }catch(c){return {}}
  return  scnMgr.getDisplayText();
 }
 
 function setNextScene(){
  var scene = scnMgr.getNextScene()
- sendScene(scene)
+ try { sendScene(scene) }catch(c){return {}}
  return  scnMgr.getDisplayText();
 }
 
 function setPreviousScene(){
  var scene = scnMgr.getPreviousScene()
- sendScene(scene)
+ try { sendScene(scene) }catch(c){return {}}
  return  scnMgr.getDisplayText();
 }
 
 async function sendScene(scene, i=0){  // yes, this is recursive, so keep that i=0
-    try{
     if ( i < scene.actions.length){
         var action = scene.actions[i];
         response = await vMix.send( action )
-        if ( response.status != "200") throw new Error(response.statusText);
         sendScene(scene,++i)
     }
-  } catch (err) {console.log(err.message)}
 }
 
 

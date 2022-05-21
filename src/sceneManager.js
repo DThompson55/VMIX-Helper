@@ -30,7 +30,7 @@ return getScene(currentScene)
 function getDisplayText(){
 return {"currentSceneName":getScene(currentScene).description,
         "nextSceneName":getScene(currentScene+1).description,
-        "buttons":getButtons(currentScene)}
+        "buttons":getButtons(currentScene),connectionStatus:""}
 }
 
 function getButtons(n){ // 1 = fwd, 2 = back, 4 = ff, 8 = rw

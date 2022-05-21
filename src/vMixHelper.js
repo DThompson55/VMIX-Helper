@@ -17,11 +17,18 @@ async function send(params){ //function (response)
 
 
 async function connect(callback){//{httpResponse, status}
-        response = await send({}).catch((err)=>{
-            callback({vMixCfg:null, vMixStatus:err.code+" http://"+err.address+":"+err.port})})
-        parser.parseString(response.data, (err,result) => {
-        callback({vMixCfg:result, vMixStatus:"Connected"})
-        })
-    }
+
+        try {
+            response = await send({})
+            parser.parseString(response.data, (err,result) => {
+                callback({vMixCfg:result, vMixStatus:"Connected"})
+            })
+        } catch (err) {
+                       if ( err.code ) 
+                        callback({vMixCfg:null, vMixStatus:err.code+" http://"+err.address+":"+err.port})
+                       else 
+                        callback({vMixCfg:null,vMixStatus:"vMix Not Connected?"})
+            }
+        }
 
 module.exports = {connect:connect, send:send}
